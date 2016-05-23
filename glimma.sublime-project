@@ -1,0 +1,24 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"settings":
+	{
+		"tab_size": 4,
+		"translate_tabs_to_spaces": true,
+		"ensure_newline_at_eof_on_save": true,
+		"rulers": [80]
+	},
+	"build_systems":
+	[
+		{
+			"name": "Glimma-build",
+			"working_dir": "$project_path/..",
+			"path": "/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/sbin",
+			"cmd": ["sh", "fastbuild.sh"]
+		}
+	]
+}

@@ -13,13 +13,23 @@ assertClass <- function(x, type) {
     }
 }
 
+# Helper function for asserting list classes
+lassertClass <- function(x, type) {
+    check.fail <- !all(lapply(x, class) == type)
+    if (check.fail) {
+        name <- quotify(deparse(substitute(x)))
+        type <- quotify(type)
+        stop(paste("at least one member of list", name, "not of class", type))
+    }
+}
+
 #' Column checker
-#' 
+#'
 #' Check if data.frame controls all the listed columns
-#' 
+#'
 #' @param df the data frame to check.
 #' @param columns the columns that should exist in the data frame.
-#' 
+#'
 #' @return stops program with an error if column cannot be found in df
 
 hasColumns <- function(df, columns) {
@@ -27,83 +37,6 @@ hasColumns <- function(df, columns) {
         violations <- paste(quotify(columns[columns %in% names(df)]), collaps=", ")
         stop(paste(violations, "cannot be found in", deparse(substitute(df))))
     }
-}
-
-# Function to add double quotes onto the start and end of the strings
-quotify <- function(x) {
-    paste("\"", x, "\"", sep="")
-}
-
-# Function to add square brackets around string
-arrayify <- function(x) {
-    paste("[", paste(x, collapse=","), "]", sep="")
-}
-
-# Function to add braces around string
-objectify <- function(x, y) {
-    paste("{", paste(x, y, sep=":", collapse=","), "}", sep="")
-}
-
-#' JSON converter for data frames
-#' 
-#' Function to create a JSON from a data.frame
-#' 
-#' @param df the data.frame to be converted into JSON
-#' 
-#' @return a stringified JSON, the data.frame is encoded as a vector of objects, 
-#' with each column being one object with keys corresponding to column names.
-#' 
-#' @importFrom methods is
-
-makeDFJson <- function(df) {
-    df <- data.frame(df)
-
-    for (n in names(df)) {
-        if (!is(df[[n]], "numeric") && !is(df[[n]], "logical")) {
-            df[[n]] <- quotify(as.character(df[[n]]))
-        }
-    }
-
-    coln <- paste(quotify(colnames(df)), ":", sep="")
-    temp <- t(apply(df, 1, function (x) { paste(coln, ifelse(is.na(x), "\"NA\"", x), sep="") }))
-    temp <- apply(temp, 1, function (x) { paste("{", paste(x, collapse=","), "}", sep="") })
-
-    output <- paste("[", paste(temp, collapse=","), "]", sep="")
-    class(output) <- "json"
-
-    output
-}
-
-#' JSON converter for chart objects
-#' 
-#' Function to make json object from a chart, ignoring the json property
-#' 
-#' @param chart the chart object to be converted into JSON
-#' 
-#' @return a stringified JSON object containing the chart data.
-#' 
-#' @importFrom methods is
-
-makeChartJson <- function(chart) {
-    if (!is(chart, "jschart")) {
-        stopType("jschart", "chart")
-    }
-
-    makeEntry <- function(d) {
-        if (is.null(chart[[d]])) {
-            return(paste(quotify(d), "null", sep=":"))
-        } else if (length(chart[[d]]) > 1) {
-            return(paste(quotify(d), arrayify(quotify(chart[[d]])), sep=":"))
-        } else if (is.list(chart[[d]])) {
-            return(paste(quotify(d), makeListJson(chart[[d]]), sep=":"))
-        } else {
-            return(paste(quotify(d), quotify(chart[[d]]), sep=":"))
-        }
-    }
-
-    chart$json <- NULL
-
-    paste0("{", paste(sapply(names(chart), makeEntry), collapse=","), "}")
 }
 
 # Function to print stored json as a javascript var declaration
@@ -122,37 +55,6 @@ printJsonToFile <- function(json, filename, varname) {
     close(file.con)
 }
 
-# Function to make json object ouf of factor levels
-makeFactJson <- function(sample.groups) {
-    sample.groups <- as.factor(sample.groups)
-    l <- levels(sample.groups)
-    l <- paste("\"", l, "\"", sep="")
-    paste("[", paste(l, collapse=", "), "]", sep="")
-}
-
-# Function to make json object out of a list
-makeListJson <- function(x) {
-    if (!is.list(x)) {
-        stopType("list", "x")
-    }
-
-    parse <- function(d) { 
-        if (is.numeric(x[[d]])) {
-            paste(quotify(d), x[[d]], sep=":")
-        } else {
-            paste(quotify(d), quotify(x[[d]]), sep=":")
-        }
-    }
-
-    keys <- names(x)
-    entries <- sapply(keys, parse)
-    output <- paste("{", paste(entries, collapse=","), "}", sep="")
-
-    class(output) <- "json"
-
-    output
-}
-
 # Function to get the nth character of a string
 char <- function(string, n) {
     if (!is(string, "character")) {
@@ -160,12 +62,12 @@ char <- function(string, n) {
     }
 
     if (any(abs(n) > nchar(string))) {
-        stop(paste(quotify("n"), "is outside index range"))   
+        stop(paste(quotify("n"), "is outside index range"))
     }
 
     if (n == 0) {
         return(rep("", length(string)))
-    } 
+    }
 
     if (n < 0) {
         n <- nchar(string) + n + 1
@@ -176,7 +78,7 @@ char <- function(string, n) {
 
 # Function to return filepaths
 pathMaker <- function(path) {
-    if (char(path, -1) != "/") { 
+    if (char(path, -1) != "/") {
         stop("path must end with /")
     }
     function (x) {
@@ -185,13 +87,13 @@ pathMaker <- function(path) {
 }
 
 #' String to hex colour converter
-#' 
+#'
 #' Function to convert colour strings into hex codes
-#' 
+#'
 #' @param x the string colour value(s) to be converted to hex values.
-#' 
+#'
 #' @return hex codes for colours
-#' 
+#'
 #' @importFrom grDevices col2rgb
 
 CharToHexCol <- function(x) {
@@ -201,13 +103,13 @@ CharToHexCol <- function(x) {
 }
 
 #' Numeric to hex colour converter
-#' 
+#'
 #' Functions to convert numbers into corresponding hex codes for colours
-#' 
+#'
 #' @param x the colour value(s) to be converted to hex values.
-#' 
+#'
 #' @return hex codes for colours
-#' 
+#'
 #' @importFrom grDevices palette col2rgb
 
 NumToHexCol <- function(x) {
@@ -222,7 +124,7 @@ is.hex <- function(x) {
     (grepl("#[[:xdigit:]]{6}", x) | grepl("#[[:xdigit:]]{8}", x))
 }
 
-# 
+# Function to convert colours or numbers to hex colour values
 as.hexcol <- function(x) {
     if (is.character(x)) {
         if (all(is.hex(x))) {
@@ -230,7 +132,7 @@ as.hexcol <- function(x) {
         } else {
             temp <- x
             temp[!is.hex(x)] <- CharToHexCol(temp[!is.hex(x)])
-            return(temp)    
+            return(temp)
         }
     } else if (is.numeric(x)) {
         return(NumToHexCol(x))

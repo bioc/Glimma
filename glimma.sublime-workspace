@@ -1,0 +1,1284 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"gldm",
+				"glMDPlot.deseq"
+			],
+			[
+				"circ",
+				"circle_container"
+			],
+			[
+				"html",
+				"html_template	html_template"
+			],
+			[
+				"algorithm",
+				"algorithm	latex_algorithm"
+			],
+			[
+				"algo",
+				"algorithm	latex_algorithm"
+			],
+			[
+				"expr",
+				"expr_matrix"
+			],
+			[
+				"roundbr",
+				"roundbr{arg1}	Assignment1.tex"
+			],
+			[
+				"assi",
+				"assigned_reads"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"filter",
+				"filtered_counts"
+			],
+			[
+				"align",
+				"align	New align"
+			],
+			[
+				"WARHOU",
+				"WAREHOUSE_NAME"
+			],
+			[
+				"A",
+				"AreaUse"
+			],
+			[
+				"Total",
+				"TotalTransportCostPW"
+			],
+			[
+				"Al",
+				"AlterationCosts"
+			],
+			[
+				"in",
+				"interactivebarcodeplot"
+			],
+			[
+				"MI",
+				"MISEQ_selgenes"
+			],
+			[
+				"Dan",
+				"Daniela240215"
+			],
+			[
+				"design_log",
+				"design_logperc"
+			],
+			[
+				"normalised",
+				"normalised_counts"
+			],
+			[
+				"norm",
+				"norm_fact"
+			],
+			[
+				"mean_",
+				"mean_molecule_counts"
+			],
+			[
+				"mean",
+				"mean_molecule_counts"
+			],
+			[
+				"lab",
+				"labs"
+			],
+			[
+				"merge",
+				"merged_filtered_counts"
+			],
+			[
+				"bu",
+				"BUTTON"
+			],
+			[
+				"G_Cl",
+				"G_CLICKED_POINT"
+			],
+			[
+				"log",
+				"loggeomeans"
+			],
+			[
+				"fcercc_",
+				"fcercc_miseq"
+			],
+			[
+				"cpm",
+				"cpmallcounts_filt"
+			],
+			[
+				"allcoun",
+				"allcounts_filt"
+			],
+			[
+				"filtered",
+				"filtered_counts_MISEQ"
+			],
+			[
+				"feat",
+				"featureCounts_buffer_output"
+			],
+			[
+				"dt_neg",
+				"dt_neg"
+			],
+			[
+				"fit_plas",
+				"fit_plas_robust"
+			],
+			[
+				"fit_pos",
+				"fit_pos_robust"
+			],
+			[
+				"fit_neg",
+				"fit_neg_robust"
+			],
+			[
+				"d",
+				"d"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "R/glMDPlot.R",
+			"settings":
+			{
+				"buffer_size": 29596,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "R/glMDSPlot.R",
+			"settings":
+			{
+				"buffer_size": 7479,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "R/glScatter.R",
+			"settings":
+			{
+				"buffer_size": 8328,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "R/jsonConvert.R",
+			"settings":
+			{
+				"buffer_size": 3543,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "R/jsHelper.R",
+			"settings":
+			{
+				"buffer_size": 2091,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "R/glimma.R",
+			"settings":
+			{
+				"buffer_size": 7067,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Glimma-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Glimma-build",
+					""
+				],
+				[
+					"Packages/Nodejs/Nodejs.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Glimma-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Glimma-build",
+					""
+				],
+				[
+					"Packages/R-Box/support/R-Box.sublime-build",
+					""
+				],
+				[
+					"Packages/SendText+/SendText+.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Glimma-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"GlimmaJS-build",
+					""
+				],
+				[
+					"Packages/Nodejs/Nodejs.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"GlimmaJS-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					"Clean up Files"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					"Clean up Files"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				],
+				[
+					"Packages/User/knitr.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/knitr.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXing/LaTeX.sublime-build",
+					"Clean up Files"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				],
+				[
+					"Packages/User/my_latex.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/User/my_latex.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"glimma-build",
+					""
+				],
+				[
+					"Packages/SublimeREPL/sublimerepl_build_system_hack.sublime-build",
+					""
+				]
+			],
+			[
+				"glimma-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 67.0,
+		"last_filter": "trailing",
+		"selected_items":
+		[
+			[
+				"trailing",
+				"Trimmer: Trim trailing whitespace."
+			],
+			[
+				"trail",
+				"Trimmer: Trim trailing whitespace."
+			],
+			[
+				"trim",
+				"Trimmer: Trim trailing whitespace."
+			],
+			[
+				"trai",
+				"Trimmer: Trim trailing whitespace."
+			],
+			[
+				"traili",
+				"Trimmer: Trim trailing whitespace."
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"list pac",
+				"Package Control: List Packages"
+			],
+			[
+				"lint",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"install pac",
+				"Package Control: Install Package"
+			],
+			[
+				"remove p",
+				"Package Control: Remove Package"
+			],
+			[
+				"lis p",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install pa",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"grunt",
+				"Grunt"
+			],
+			[
+				"rbox",
+				"R-Box: Choose Program"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"listpac",
+				"Package Control: List Packages"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"repl node",
+				"SublimeREPL: Node"
+			],
+			[
+				"rbo",
+				"R-Box: Choose Program"
+			],
+			[
+				"repl py",
+				"SublimeREPL: Python"
+			],
+			[
+				"upda",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"Rbox",
+				"R-Box: Choose Program"
+			],
+			[
+				"repl R",
+				"SublimeREPL: R"
+			],
+			[
+				"replr",
+				"SublimeREPL: R"
+			],
+			[
+				"packag inst",
+				"Package Control: Install Package"
+			],
+			[
+				"repl r",
+				"SublimeREPL: R"
+			],
+			[
+				"repl",
+				"SublimeREPL: R"
+			],
+			[
+				"py",
+				"SublimeREPL: Python"
+			],
+			[
+				"package install",
+				"Package Control: Install Package"
+			],
+			[
+				"package remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"lit",
+				"SublimeLinter: Toggle Linter"
+			],
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				"linter",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"qc",
+				"Git: Quick Commit"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"rpl has",
+				"SublimeREPL: Haskell"
+			],
+			[
+				"repl haskell",
+				"SublimeREPL: Haskell"
+			],
+			[
+				"repl she",
+				"SublimeREPL: Shell"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"remove pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"git",
+				"Git: Merge Branch"
+			],
+			[
+				"package ",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst package",
+				"Package Control: Install Package"
+			],
+			[
+				"mark",
+				"SublimeLinter: Choose Mark Style"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: list pa",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: instal",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"remove pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"list pack",
+				"Package Control: List Packages"
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				"Install Package	",
+				"Package Control: Install Package"
+			],
+			[
+				"Install pa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 460.0,
+		"history":
+		[
+			"#!/usr/bin/python",
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/Shian/Programs/R/IntPlots/Glimma",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/images",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/tests",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/vignettes"
+	],
+	"file_history":
+	[
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/index.html",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glimma.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glMDPlot.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glScatter.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glMDSPlot.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/jsonConvert.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/utilities.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/gltablink.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glTable.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/NEWS",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/DESCRIPTION",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/gllink.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/jsHelper.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glBar.R",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/glimma.sublime-project",
+		"/Users/Shian/Programs/R/IntPlots/check.sh",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/.Rbuildignore",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/dataDoc.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glInputs.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/tests/test_json.r",
+		"/Users/Shian/Programs/R/IntPlots/Glimma.Rcheck/00check.log",
+		"/Users/Shian/Programs/R/IntPlots/BiocCheck.log",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/NAMESPACE",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/vignettes/Glimma.Rnw",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glMD.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/link.R",
+		"/Users/Shian/Programs/R/IntPlots/cycle.sh",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/css/glimma.min.css",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/.gitignore",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/init/glimma.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/chart/scatter.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/helper/zip.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/chart/bar.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/Gruntfile.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/css/glimma-styles.css",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/rebuild.sh",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/init/index.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/layout/index.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/init/process_linkage.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/layout/autoinput.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/chart/index.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/init/initialise.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/helper/methods.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/index.js",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/JSHint.sublime-settings",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/layout/utilities.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/chart/mds.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/chart/chart.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/css/bootstrap-theme.min.css",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/GlimmaJS.sublime-project",
+		"/Users/Shian/Programs/R/IntPlots/Test/Grunt/index.html",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/init/init.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/glimma.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/package.json",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/layout/layout.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/helper/process_linkage.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/helper/index.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/helper/plot.js",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/helper/init.js",
+		"/Users/Shian/Programs/Bash/gruntprep.sh",
+		"/Users/Shian/Programs/R/IntPlots/GlimmaJS/src/hello.js",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/js/helper/layout.js",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/js/helper/glimma.js",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/js/helper/init.js",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/js/helper/methods.js",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/js/helper/plot.js",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/JSLint/JSLint.sublime-settings",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/JSLint.sublime-settings",
+		"/Users/Shian/Programs/R/test/Glimma/scatter.html",
+		"/Users/Shian/Programs/R/test/Glimma/bar.html",
+		"/Users/Shian/Programs/R/test/Glimma/bar.js",
+		"/Users/Shian/Programs/R/test/Glimma/index.html",
+		"/Users/Shian/Programs/R/IntPlots/Glimma2.0/R/barcodePlot.R",
+		"/Users/Shian/Programs/R/test/Glimma/data.js",
+		"/Users/Shian/Programs/R/IntPlots/Glimma2.0/inst/js/chart/scatter.js",
+		"/Users/Shian/Programs/R/test/Glimma/index2.html",
+		"/Users/Shian/Programs/R/IntPlots/Glimma2.0/R/interactiveScatter.R",
+		"/Users/Shian/Programs/R/test/Glimma/index.js",
+		"/Users/Shian/Downloads/gun.txt",
+		"/Users/Shian/Programs/R/test/Glimma/js/index.js",
+		"/Users/Shian/Programs/R/test/Glimma/data.json",
+		"/Users/Shian/Programs/R/test/Glimma/methods.js",
+		"/Users/Shian/Programs/R/test/Glimma/scatter_chart.js",
+		"/Users/Shian/Programs/R/IntPlots/Glimma2.0/R/utilities.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma2.0/inst/js/helper/methods.js",
+		"/Users/Shian/Programs/R/test/Glimma/charting.html",
+		"/Users/Shian/Programs/R/IntPlots/Glimma2.0/R/interactiveMAPlot.R",
+		"/Users/Shian/Programs/R/IntPlots/Test/Hardware Accel/style.css",
+		"/Users/Shian/Programs/R/IntPlots/Test/Bootstrap/charting.html",
+		"/Users/Shian/Programs/R/IntPlots/Test/Dispatch/index.html",
+		"/Users/Shian/Programs/R/IntPlots/Test/Hardware Accel/slides.html",
+		"/Users/Shian/Programs/R/IntPlots/Test/Hardware Accel/charting.html",
+		"/Users/Shian/Programs/R/IntPlots/Glimma2.0/inst/js/helper/format_bootstrap.js",
+		"/Users/Shian/Programs/R/IntPlots/Glimma2.0/inst/js/helper/init.js",
+		"/Users/Shian/Programs/R/IntPlots/Glimma2.0/inst/index.html",
+		"/Users/Shian/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/1B983D51-C761-4609-B6FC-93AC3221B514/makeTable.js",
+		"/Users/Shian/Programs/R/IntPlots/Test/Bootstrap/index.html",
+		"/Users/Shian/Programs/R/IntPlots/Glimma2.0/inst/js/scatter_chart.js",
+		"/Users/Shian/Programs/R/IntPlots/Test/Dispatch/symbol_map.js",
+		"/Users/Shian/Programs/R/IntPlots/Test/Dispatch/pics5.json",
+		"/Users/Shian/Programs/R/IntPlots/Test/Dispatch/brush.js",
+		"/Users/Shian/Programs/R/IntPlots/Test/Dispatch/scatter.js",
+		"/Users/Shian/Local/Cyril/14_05_2015/merge_with_lisa_2/write_counts.R",
+		"/Users/Shian/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/EB24242E-4706-426F-9848-B84B56553642/makeTable.js",
+		"/Users/Shian/Local/Cyril/14_05_2015/merge_with_lisa_2/Modelling.R",
+		"/Users/Shian/Programs/R/IntPlots/Test/Bootstrap/time_series_chart.js",
+		"/Users/Shian/Programs/R/IntPlots/Test/Bootstrap/time_series.html",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/Shian/Programs/Python/fallout_hack.py",
+		"/Users/Shian/Downloads/Example_code/Glimma_Example.R",
+		"/Users/Shian/Programs/R/IntPlots/Test/creatTableJson.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/interactiveMDplot.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/interactiveMAPlot.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/report_page/plot_utils.js",
+		"/Users/Shian/Local/Cyril/14_05_2015/merge_with_lisa_2/table_ILC2P_TCF7_batch2.tsv",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/latex_For.sublime-snippet",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/latex_While.sublime-snippet",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/latex_sigalg.sublime-snippet",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/latex_If.sublime-snippet",
+		"/Users/Shian/Dropbox/University/2015/Algorithms and Complexity/Assignment2/Assignment2.tex",
+		"/Users/Shian/Dropbox/University/2015/Algorithms and Complexity/AlgComp.tex",
+		"/Users/Shian/Dropbox/Masters Research/Files/Doug/association.R",
+		"/Users/Shian/Dropbox/Masters Research/Files/Doug/keepmissing.R",
+		"/Users/Shian/Dropbox/Masters Research/Files/Doug/script.sh"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"charts",
+			"= ",
+			"disable",
+			"print",
+			"<-",
+			"makechart",
+			"character",
+			"path=path, folder=folder, html=html, launch=launch,",
+			"xval=\"logCPM\", yval=\"logFC\",",
+			"sample.cols=",
+			"sample.cols",
+			"2),",
+			"#' @param sample.cols vector of strings denoting colours for each sample point on the expression plot.",
+			"assercla",
+			"type",
+			"partial",
+			"args",
+			"arg",
+			",coef",
+			"p.adjust(x$p.value[,coef], method=p.adj.method)",
+			"class.fail",
+			"ERROR: ",
+			"    ",
+			"xlab=\"Average log CPM\", ylab=\"log-fold-change\"...)",
+			"fold-chan\"",
+			"old-chan\"",
+			"log-fold-chan",
+			"glMDPlot.hidden(plotting.data, sample.exp, display.columns, search.by,\n                id.column=id.column, default.col=cols[2], jitter=jitter,\n                path=path, folder=folder, html=html, launch=launch,\n                xlab=\"Average log CPM\", ...)",
+			"    glMDPlot.hidden(plotting.data, sample.exp, display.columns, search.by,\n                id.column=id.column, default.col=cols[2], jitter=jitter,\n                path=path, folder=folder, html=html, launch=launch,\n                xlab=\"Average log CPM\", ...)\n}",
+			"    glMDPlot.hidden(plotting.data, sample.exp, display.columns, search.by,\n                id.column=id.column, default.col=cols[2], jitter=jitter,\n                path=path, folder=folder, html=html, launch=launch,\n                xlab=\"Average log CPM\", ...)",
+			"glMDPlot.hidden(plotting.data, sample.exp, display.columns, search.by,\n                id.column=id.column, default.col=cols[2], jitter=jitter,\n                path=path, folder=folder, html=html, launch=launch,\n                xlab=\"Average log CPM\", ...)",
+			"glMDPlot.hidden(plotting.data, sample.exp, display.columns, search.by,\n                    id.column=id.column, default.col=cols[2], jitter=jitter,\n                    path=path, folder=folder, html=html, launch=launch, \n                    xlab=\"Mean Expression\", ...)",
+			"glMDPlot.wehi(",
+			"deseq(",
+			"glMDPlot.deseq(",
+			".deseq",
+			".wehi",
+			"glMDPlot.wehi(",
+			"glMDPlot.wehi",
+			"t(cpm(gene.counts, log=TRUE)))\n}",
+			"glMDPlot.deseq()",
+			"@param id.column",
+			"display.columns=",
+			"plot1 <-",
+			"norm.counts",
+			"::",
+			"edgeR::",
+			"\\t",
+			"1f77b4",
+			"exp.col",
+			"exp.cols",
+			"plot2 <-",
+			"col = exp.cols,",
+			"col = exp.cols",
+			"col =",
+			"plot2",
+			"[3]",
+			"plot2",
+			"[3]",
+			"plot2",
+			"\\[3\\]",
+			"glimma",
+			"col = exp",
+			"[3]",
+			"plot2 <-",
+			"sample.exp <- data.frame(Sample = samples,",
+			"#' @param cols",
+			"cols=",
+			"cols=c",
+			"exp.cols=rep(\"#1f77b4\", nrow(counts))",
+			"xp.cols=",
+			"interactiveMD",
+			"as.hex",
+			"colval=\"col\",",
+			"# col = as.hex(exp.cols),",
+			"ifelse(all(is.hex(exp.cols)), exp.cols, CharToHexCol(exp.cols))",
+			"sample.exp <-",
+			"sample.exp",
+			"col = exp.cols,",
+			"plot2 <-",
+			"x.jitter = jitter",
+			"hide=TRUE)",
+			"plot2 <- ",
+			"plot2",
+			"Glimma",
+			"glimma",
+			"sample.exp <- data.frame",
+			"sample.exp",
+			"#' @param cols",
+			"exp.cols=rep(\"1\"),",
+			"cols=c(\"#0000FF\", \"#858585\", \"#B32222\")",
+			"cols",
+			"stats::",
+			"#' @importFrom methods",
+			"p.adjust",
+			"ruler",
+			"\\t",
+			"@examples",
+			"library",
+			"example",
+			"examples",
+			"#' glMDPlot(vfit, counts=x$counts, anno=x$genes, groups=genotype, samples=1:7,\n#'          status=results[,2], main=\"MD plot: Wild-type vs Smchd1\",\n#'          display.columns=c(\"Symbols\", \"GeneID\", \"GeneName\"),\n#'          folder=\"Smchd1-Lymphoma\")",
+			"example",
+			"donttest",
+			"cpm(",
+			"cpm",
+			"jitter=jitter",
+			"@example",
+			"(",
+			"R",
+			"required",
+			"[0-9]",
+			"highlightById",
+			"#' @param xlab",
+			"axis",
+			"param",
+			"html=\"",
+			"html=",
+			"info",
+			"ndim",
+			"nsamples - 1",
+			"val",
+			"color.",
+			"defauls",
+			"#' @param x the DGELRT object.\n#' @param xval the column to plot on x axis.\n#' @param yval the column to plot on y axis.\n#' @param counts the matrix containing all counts.\n#' @param anno the data.frame containing gene annotations.\n#' @param groups the factor containing experimental groups of the samples.\n#' @param samples the names of the samples.\n#' @param status vector giving the control status of data point, of same length as the number of rows of object. If NULL, then all points are plotted in the default color.\n#' @param xval the label on the x axis.\n#' @param yval the label on the y axis.\n#' @param search.by the name of the column which will be used to search for data points. (should contain unique values)\n#' @param jitter the amount of jitter to apply to the samples in the expressions plot.\n#' @param display.columns character vector containing names of columns to display in mouseover tooltips.\n#' @param id.column the column containing unique identifiers for each gene.\n#' @param cols vector of strings denoting colours corresponding to control status -1, 0 and 1. (may be R named colours or Hex values)\n#' @param path the path in which the folder will be created.\n#' @param folder the name of the fold to save html file to.\n#' @param html the name of the html file to save plots to.\n#' @param launch TRUE to launch plot after call.\n#' @param ... additional arguments to be passed onto the MD plot.",
+			"#' @return Draws a two-panel interactive MD plot in an html page.",
+			" The left ",
+			"glMDPlot.wehi"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"overbar",
+			"y",
+			"})\n",
+			"f(\\pmb{x_1, ... ,x_n};\\pmb{\\theta}) &= \\prod\\limits_{i=1}^n \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{\\frac{(x_i - \\mu)^2}{2\\sigma^2}} \\\\\n	&= \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{\\sum\\limits_{i=1}^n\\frac{(x_i - \\mu)^2}{2\\sigma^2}} \\\\\n	&= \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{\\sum\\limits_{i=1}^n\\frac{x_i^2 - 2\\mu x_i + \\mu^2}{2\\sigma^2}} \\\\\n	&= g(T(\\pmb{x}), \\pmb{\\theta}) * 1 \\\\\n	&= g(T(\\pmb{x}), \\pmb{\\theta}) * h(\\pmb{x})",
+			" <- ",
+			"'",
+			"GeneName",
+			"DC_genes",
+			"",
+			"\"",
+			"front",
+			"cpmallcounts_filt",
+			" <- ",
+			"ilsgr0260",
+			"j"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "R/glMDPlot.R",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 29596,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3522,
+								3522
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"r_box_status": false,
+							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 764.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "R/glMDSPlot.R",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7479,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1875,
+								1875
+							]
+						],
+						"settings":
+						{
+							"r_box_status": false,
+							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 480.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "R/glScatter.R",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8328,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5327,
+								5327
+							]
+						],
+						"settings":
+						{
+							"r_box_status": false,
+							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "R/jsonConvert.R",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "R/jsHelper.R",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2091,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 424.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "R/glimma.R",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7067,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2687.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 117.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 102.0
+	},
+	"pinned_build_system": "",
+	"project": "glimma.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 205.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
