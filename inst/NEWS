@@ -1,5 +1,8 @@
 Glimma News
 
+CHANGES IN Glimma 1.1.1
+  * MDS plot now takes data.frames for groups argument.
+
 CHANGES IN Glimma 1.1.0
   * Added tables to MD Plot.
 
