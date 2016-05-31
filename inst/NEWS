@@ -1,10 +1,13 @@
 Glimma News
 
-CHANGES IN Glimma 1.1.1
-  * MDS plot now takes data.frames for groups argument.
+CHANGES IN Glimma 1.2.0
+  * Added enter to search on MD plot table search box.
+  * Added sample.cols argument to MD Plot.
+  * Added data.frame handling for groups argument in MDS plot.
+  * Fixed multiple plots in same directory overwriting each other's data.
 
 CHANGES IN Glimma 1.1.0
-  * Added tables to MD Plot.
+  * Added tables to MD Plot.  
 
 CHANGES IN Glimma 1.0.0
     
