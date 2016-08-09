@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"initi",
+				"initialisation"
+			],
+			[
 				"gldm",
 				"glMDPlot.deseq"
 			],
@@ -160,50 +164,42 @@
 	"buffers":
 	[
 		{
+			"file": "R/glXYPlot.R",
+			"settings":
+			{
+				"buffer_size": 5615,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "R/glMDPlot.R",
 			"settings":
 			{
-				"buffer_size": 29596,
+				"buffer_size": 41622,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "R/glMDSPlot.R",
+			"file": "DESCRIPTION",
 			"settings":
 			{
-				"buffer_size": 7479,
+				"buffer_size": 884,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "R/glScatter.R",
+			"file": "man/glMDPlot.DGEExact.Rd",
 			"settings":
 			{
-				"buffer_size": 8328,
+				"buffer_size": 3463,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "R/jsonConvert.R",
+			"file": "man/glMDPlot.Rd",
 			"settings":
 			{
-				"buffer_size": 3543,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "R/jsHelper.R",
-			"settings":
-			{
-				"buffer_size": 2091,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "R/glimma.R",
-			"settings":
-			{
-				"buffer_size": 7067,
+				"buffer_size": 1858,
 				"line_ending": "Unix"
 			}
 		}
@@ -407,24 +403,24 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 67.0,
-		"last_filter": "trailing",
+		"height": 347.0,
+		"last_filter": "trail",
 		"selected_items":
 		[
-			[
-				"trailing",
-				"Trimmer: Trim trailing whitespace."
-			],
 			[
 				"trail",
 				"Trimmer: Trim trailing whitespace."
 			],
 			[
-				"trim",
+				"trai",
 				"Trimmer: Trim trailing whitespace."
 			],
 			[
-				"trai",
+				"trailing",
+				"Trimmer: Trim trailing whitespace."
+			],
+			[
+				"trim",
 				"Trimmer: Trim trailing whitespace."
 			],
 			[
@@ -690,30 +686,31 @@
 		"/Users/Shian/Programs/R/IntPlots/Glimma/inst",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/images",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/tests",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/man",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/R",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/vignettes"
 	],
 	"file_history":
 	[
-		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/index.html",
-		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glimma.R",
-		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glMDPlot.R",
-		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glScatter.R",
-		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glMDSPlot.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/DESCRIPTION",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/R/jsonConvert.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glScatter.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/NEWS",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glMDPlot.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glimma.R",
+		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/jsHelper.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glMDSPlot.R",
+		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/index.html",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/R/utilities.R",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/R/gltablink.R",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glTable.R",
-		"/Users/Shian/Programs/R/IntPlots/Glimma/inst/NEWS",
-		"/Users/Shian/Programs/R/IntPlots/Glimma/DESCRIPTION",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/R/gllink.R",
-		"/Users/Shian/Programs/R/IntPlots/Glimma/R/jsHelper.R",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glBar.R",
 		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/glimma.sublime-project",
 		"/Users/Shian/Programs/R/IntPlots/check.sh",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/.Rbuildignore",
-		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/Shian/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/R/dataDoc.R",
 		"/Users/Shian/Programs/R/IntPlots/Glimma/R/glInputs.R",
@@ -841,134 +838,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$counts",
+			"stop(\"The status vector should have same length as the number of columns as main input object.\")",
+			"columns",
+			"@describeIn",
+			"#' @describeIn glMDPlot default function for DGELRT objects",
+			"coef",
+			"id.column",
+			"rownames(counts) <- make.names(plotting.data[[id.column]])",
+			"rownames(counts) <- make.names(plotting.data[[id.column]]) ",
+			"rownames(counts) <- make.names(plotting.data[[id.column]])",
+			"rownames(",
+			"anno,",
+			"anno",
+			"groups",
+			"}    ",
+			"))",
+			"if(",
+			"!=",
+			"y.grid",
+			"y.grid=TRUE",
+			"y.grid=TRUE, ",
+			"ystep",
+			"sample.exp <- FALSE",
+			"if (counts)",
+			"if (ncol(counts) != length(samples)) {",
+			"# Value initialisation\n\n    xval <- \"logMean\"\n    yval <- \"logFC\"\n\n    if (any(!is.hex(cols))) {\n        cols[!is.hex(cols)] <- CharToHexCol(cols[!is.hex(cols)])",
+			"counts=FALSE",
+			"launch=launch)",
+			"counts, anno",
+			"counts,",
+			"counts",
+			"display.colums",
+			"!exists",
+			"is.null",
+			"makeJson",
+			"json",
+			"head",
+			"side.gridstep=ifelse(side.log",
+			"ifelse(side.log",
+			"step(",
+			"NULL",
+			"ifelse(side.log, NULL, 0.5)",
+			"NULL",
+			"ifelse",
+			"side.step",
+			"if (ncol(counts) != length(samples)) {\n        stop(paste(\"columns in count differ from number of samples:\", ncol(counts), \"vs\", length(samples)))\n    }",
+			"gridstep)",
+			"xgridstep",
+			"$x",
+			"xgrid",
+			"ystep",
+			"step",
+			"y.step",
+			"#' @param side.ylab label for y axis on right side plot.",
+			"gridstep,",
+			"gridstep",
+			"paste0(\"",
+			"if (chart$",
+			"x.log",
+			"side.xlab=side.xlab, side.ylab=side.ylab, side.log=side.log,",
+			"side.xlab=side.xlab, side.ylab=side.ylab, side.log=side.log,\n                    ",
+			"side.xlab=side.xlab, side.ylab=side.ylab, side.log=side.log,",
+			"glMDPlot.hidden(plotting.data,",
+			"side.log=FALSE,",
+			"side.log",
+			"side.ylab=side.ylab,",
+			"side.log=",
+			", ",
+			"<- function",
+			"<- functon",
+			"#' @param transform TRUE if counts are raw and should be cpm transformed, FALSE if counts are already transformed to expression scale.",
+			"side.xlab=\"\"",
+			"logCPM",
+			"LogCPM",
+			"lab,",
+			"function(x, ",
+			"function(x",
+			"transform=TRUE,",
+			"#' @param transform TRUE if counts are raw and should be cpm transformed, FALSE if counts are already transformed to expression scale.",
+			"gene.counts <-",
+			"gene.counts",
+			"counts <-",
+			"counts)",
+			"counts <-",
+			"counts",
+			"#' @param transform",
+			"counts",
+			"gene.counts",
+			"sample.exp <- data.frame(Sample = samples,",
+			"transform=TRUE",
+			"transform",
+			"cpm(",
+			"counts, anno,",
+			"counts,",
+			"aw and should",
+			"transformed",
+			"#' @param counts",
+			"GLEH",
+			"#' @return Draws a two-panel interactive MD plot in an html page. The left plot \n#' shows the log-fold-change vs average expression. The right plot shows the \n#' expression levels of a particular gene of each sample. Hovering over points \n#' on left plot will plot expression level for corresponding gene, clicking on \n#' points will fix the expression plot to gene. If table is turned off then \n#' search-bar can be used to ",
+			"#' @return Draws a two-panel interactive MD plot in an html page. The left plot shows the log-fold-change vs average expression.",
+			"#' @return Draws",
+			"character vector containing names of columns to display in mouseover tooltips.",
+			"#' @param ... additional arguments to be passed onto the MD plot.",
+			"#' @param ... additional ",
+			"#' @param ... additional arguments",
+			"MD plot",
+			"DESeqDataset(",
+			"results(",
+			"counts(",
+			"p.adjust(",
+			"p.adjust",
+			"#' sel <- rowSums(edgeR::",
+			"(cpm(",
+			"cpm(",
+			"cpm",
+			"#' @param ssample.col the colours of the sample points on the expression plot.",
+			"sample.cols",
+			"groups",
+			"sample.cols,",
+			"groups, samples,",
+			"@param samples",
+			"@param groups",
+			"groups",
 			"charts",
 			"= ",
 			"disable",
 			"print",
-			"<-",
-			"makechart",
-			"character",
-			"path=path, folder=folder, html=html, launch=launch,",
-			"xval=\"logCPM\", yval=\"logFC\",",
-			"sample.cols=",
-			"sample.cols",
-			"2),",
-			"#' @param sample.cols vector of strings denoting colours for each sample point on the expression plot.",
-			"assercla",
-			"type",
-			"partial",
-			"args",
-			"arg",
-			",coef",
-			"p.adjust(x$p.value[,coef], method=p.adj.method)",
-			"class.fail",
-			"ERROR: ",
-			"    ",
-			"xlab=\"Average log CPM\", ylab=\"log-fold-change\"...)",
-			"fold-chan\"",
-			"old-chan\"",
-			"log-fold-chan",
-			"glMDPlot.hidden(plotting.data, sample.exp, display.columns, search.by,\n                id.column=id.column, default.col=cols[2], jitter=jitter,\n                path=path, folder=folder, html=html, launch=launch,\n                xlab=\"Average log CPM\", ...)",
-			"    glMDPlot.hidden(plotting.data, sample.exp, display.columns, search.by,\n                id.column=id.column, default.col=cols[2], jitter=jitter,\n                path=path, folder=folder, html=html, launch=launch,\n                xlab=\"Average log CPM\", ...)\n}",
-			"    glMDPlot.hidden(plotting.data, sample.exp, display.columns, search.by,\n                id.column=id.column, default.col=cols[2], jitter=jitter,\n                path=path, folder=folder, html=html, launch=launch,\n                xlab=\"Average log CPM\", ...)",
-			"glMDPlot.hidden(plotting.data, sample.exp, display.columns, search.by,\n                id.column=id.column, default.col=cols[2], jitter=jitter,\n                path=path, folder=folder, html=html, launch=launch,\n                xlab=\"Average log CPM\", ...)",
-			"glMDPlot.hidden(plotting.data, sample.exp, display.columns, search.by,\n                    id.column=id.column, default.col=cols[2], jitter=jitter,\n                    path=path, folder=folder, html=html, launch=launch, \n                    xlab=\"Mean Expression\", ...)",
-			"glMDPlot.wehi(",
-			"deseq(",
-			"glMDPlot.deseq(",
-			".deseq",
-			".wehi",
-			"glMDPlot.wehi(",
-			"glMDPlot.wehi",
-			"t(cpm(gene.counts, log=TRUE)))\n}",
-			"glMDPlot.deseq()",
-			"@param id.column",
-			"display.columns=",
-			"plot1 <-",
-			"norm.counts",
-			"::",
-			"edgeR::",
-			"\\t",
-			"1f77b4",
-			"exp.col",
-			"exp.cols",
-			"plot2 <-",
-			"col = exp.cols,",
-			"col = exp.cols",
-			"col =",
-			"plot2",
-			"[3]",
-			"plot2",
-			"[3]",
-			"plot2",
-			"\\[3\\]",
-			"glimma",
-			"col = exp",
-			"[3]",
-			"plot2 <-",
-			"sample.exp <- data.frame(Sample = samples,",
-			"#' @param cols",
-			"cols=",
-			"cols=c",
-			"exp.cols=rep(\"#1f77b4\", nrow(counts))",
-			"xp.cols=",
-			"interactiveMD",
-			"as.hex",
-			"colval=\"col\",",
-			"# col = as.hex(exp.cols),",
-			"ifelse(all(is.hex(exp.cols)), exp.cols, CharToHexCol(exp.cols))",
-			"sample.exp <-",
-			"sample.exp",
-			"col = exp.cols,",
-			"plot2 <-",
-			"x.jitter = jitter",
-			"hide=TRUE)",
-			"plot2 <- ",
-			"plot2",
-			"Glimma",
-			"glimma",
-			"sample.exp <- data.frame",
-			"sample.exp",
-			"#' @param cols",
-			"exp.cols=rep(\"1\"),",
-			"cols=c(\"#0000FF\", \"#858585\", \"#B32222\")",
-			"cols",
-			"stats::",
-			"#' @importFrom methods",
-			"p.adjust",
-			"ruler",
-			"\\t",
-			"@examples",
-			"library",
-			"example",
-			"examples",
-			"#' glMDPlot(vfit, counts=x$counts, anno=x$genes, groups=genotype, samples=1:7,\n#'          status=results[,2], main=\"MD plot: Wild-type vs Smchd1\",\n#'          display.columns=c(\"Symbols\", \"GeneID\", \"GeneName\"),\n#'          folder=\"Smchd1-Lymphoma\")",
-			"example",
-			"donttest",
-			"cpm(",
-			"cpm",
-			"jitter=jitter",
-			"@example",
-			"(",
-			"R",
-			"required",
-			"[0-9]",
-			"highlightById",
-			"#' @param xlab",
-			"axis",
-			"param",
-			"html=\"",
-			"html=",
-			"info",
-			"ndim",
-			"nsamples - 1",
-			"val",
-			"color.",
-			"defauls",
-			"#' @param x the DGELRT object.\n#' @param xval the column to plot on x axis.\n#' @param yval the column to plot on y axis.\n#' @param counts the matrix containing all counts.\n#' @param anno the data.frame containing gene annotations.\n#' @param groups the factor containing experimental groups of the samples.\n#' @param samples the names of the samples.\n#' @param status vector giving the control status of data point, of same length as the number of rows of object. If NULL, then all points are plotted in the default color.\n#' @param xval the label on the x axis.\n#' @param yval the label on the y axis.\n#' @param search.by the name of the column which will be used to search for data points. (should contain unique values)\n#' @param jitter the amount of jitter to apply to the samples in the expressions plot.\n#' @param display.columns character vector containing names of columns to display in mouseover tooltips.\n#' @param id.column the column containing unique identifiers for each gene.\n#' @param cols vector of strings denoting colours corresponding to control status -1, 0 and 1. (may be R named colours or Hex values)\n#' @param path the path in which the folder will be created.\n#' @param folder the name of the fold to save html file to.\n#' @param html the name of the html file to save plots to.\n#' @param launch TRUE to launch plot after call.\n#' @param ... additional arguments to be passed onto the MD plot.",
-			"#' @return Draws a two-panel interactive MD plot in an html page.",
-			" The left ",
-			"glMDPlot.wehi"
+			"<-"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -976,6 +973,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"#' @return Draws a two-panel interactive MD plot in an html page. The left plot\n#' shows the log-fold-change vs average expression. The right plot shows the \n#' expression levels of a particular gene of each sample. Hovering over points \n#' on left plot will plot expression level for corresponding gene, clicking \n#' on points will fix the expression plot to gene. Clicking on rows on the table\n#' has the same effect as clicking on the corresponding gene in the plot.",
 			"overbar",
 			"y",
 			"})\n",
@@ -1006,51 +1004,50 @@
 			[
 				{
 					"buffer": 0,
-					"file": "R/glMDPlot.R",
+					"file": "R/glXYPlot.R",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 29596,
+						"buffer_size": 5615,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3522,
-								3522
+								5606,
+								5606
 							]
 						],
 						"settings":
 						{
-							"history_list_is_closing": true,
 							"r_box_status": false,
 							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 764.0,
+						"translation.y": 1736.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "R/glMDSPlot.R",
+					"file": "R/glMDPlot.R",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7479,
+						"buffer_size": 41622,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1875,
-								1875
+								25966,
+								25966
 							]
 						],
 						"settings":
@@ -1061,7 +1058,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 480.0,
+						"translation.y": 9457.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1069,25 +1066,24 @@
 				},
 				{
 					"buffer": 2,
-					"file": "R/glScatter.R",
+					"file": "DESCRIPTION",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8328,
+						"buffer_size": 884,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5327,
-								5327
+								77,
+								77
 							]
 						],
 						"settings":
 						{
-							"r_box_status": false,
-							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1100,11 +1096,11 @@
 				},
 				{
 					"buffer": 3,
-					"file": "R/jsonConvert.R",
+					"file": "man/glMDPlot.DGEExact.Rd",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3543,
+						"buffer_size": 3463,
 						"regions":
 						{
 						},
@@ -1117,9 +1113,7 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/R/Rd (R Documentation).sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1130,41 +1124,11 @@
 				},
 				{
 					"buffer": 4,
-					"file": "R/jsHelper.R",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 2091,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 424.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "R/glimma.R",
+					"file": "man/glMDPlot.Rd",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7067,
+						"buffer_size": 1858,
 						"regions":
 						{
 						},
@@ -1177,12 +1141,10 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/R-Box/syntax/R Extended.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/R/Rd (R Documentation).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2687.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
@@ -1224,7 +1186,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 117.0
+		"height": 112.0
 	},
 	"output.find_results":
 	{
@@ -1238,7 +1200,7 @@
 	"project": "glimma.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 230.0
 	},
 	"save_all_on_build": true,
 	"select_file":
