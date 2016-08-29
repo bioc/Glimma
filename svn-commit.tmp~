@@ -1,0 +1,23 @@
+
+--This line, and those below, will be ignored--
+
+M    NAMESPACE
+M    inst/css/glimma.min.css
+M    inst/js/glimma.min.js
+M    inst/NEWS
+M    glimma.sublime-workspace
+M    R/glMDPlot.R
+M    R/glScatter.R
+M    R/jsonConvert.R
+M    DESCRIPTION
+M    man/glMDPlot.DGELRT.Rd
+M    man/glMDPlot.DESeqResults.Rd
+M    man/glMDPlot.DGEExact.Rd
+M    man/glMDPlot.MArrayLM.Rd
+M    man/glMDPlot.default.Rd
+M    man/makeJson.data.frame.Rd
+M    man/glScatter.default.Rd
+D    man/makeDFJson.Rd
+M    man/glMDPlot.Rd
+M    man/glMDPlot.DESeqDataSet.Rd
+D    man/makeChartJson.Rd
