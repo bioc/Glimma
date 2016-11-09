@@ -405,9 +405,10 @@ glMDPlot.DGELRT <- function(x, counts=NULL, anno=NULL,
         }
     }
 
-    if (anyDuplicated(x[[id.column]])) {
-        stop(paste("column", quotify(id.column), "in x contains duplicated values."))
-    }
+    # Not the correct check, need to check in x and anno, commented out until fixed.
+    # if (anyDuplicated(x[[id.column]])) {
+    #     stop(paste("column", quotify(id.column), "in x contains duplicated values."))
+    # }
 
     #
     ##
@@ -421,7 +422,8 @@ glMDPlot.DGELRT <- function(x, counts=NULL, anno=NULL,
     if (is.null(anno) && is.null(x$genes)) {
         warning("No gene annotation provided.")
     } else if (!is.null(anno) && !is.null(x$genes)) {
-        anno <- merge(anno, x$genes)
+        anno <- cbind(anno, x$genes)
+        anno <- anno[!duplicated(names(anno))]
     } else if (!is.null(x$genes)) {
         anno <- x$genes
     }
@@ -649,9 +651,10 @@ glMDPlot.MArrayLM <- function(x, counts=NULL, anno=NULL,
         }
     }
 
-    if (anyDuplicated(x[[id.column]])) {
-        stop(paste("column", quotify(id.column), "in x contains duplicated values."))
-    }
+    # Not the correct check, need to check in x and anno, commented out until fixed.
+    # if (anyDuplicated(x[[id.column]])) {
+    #     stop(paste("column", quotify(id.column), "in x contains duplicated values."))
+    # }
 
     #
     ##
@@ -665,7 +668,8 @@ glMDPlot.MArrayLM <- function(x, counts=NULL, anno=NULL,
     if (is.null(anno) && is.null(x$genes)) {
         warning("No gene annotation provided.")
     } else if (!is.null(anno) && !is.null(x$genes)) {
-        anno <- merge(anno, x$genes)
+        anno <- cbind(anno, x$genes)
+        anno <- anno[!duplicated(names(anno))]
     } else if (!is.null(x$genes)) {
         anno <- x$genes
     }
@@ -834,9 +838,10 @@ glMDPlot.DESeqDataSet <- function(x, anno, groups, samples,
         }
     }
 
-    if (anyDuplicated(x[[id.column]])) {
-        stop(paste("column", quotify(id.column), "in x contains duplicated values."))
-    }
+    # Not the correct check, need to check in x and anno, commented out until fixed.
+    # if (anyDuplicated(x[[id.column]])) {
+    #     stop(paste("column", quotify(id.column), "in x contains duplicated values."))
+    # }
 
     #
     ##
@@ -967,9 +972,10 @@ glMDPlot.DESeqResults <- function(x, counts, anno, groups, samples,
         }
     }
 
-    if (anyDuplicated(x[[id.column]])) {
-        stop(paste("column", quotify(id.column), "in x contains duplicated values."))
-    }
+    # Not the correct check, need to check in x and anno, commented out until fixed.
+    # if (anyDuplicated(x[[id.column]])) {
+    #     stop(paste("column", quotify(id.column), "in x contains duplicated values."))
+    # }
 
     #
     ##
