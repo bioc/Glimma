@@ -423,7 +423,7 @@ glMDPlot.DGELRT <- function(x, counts=NULL, anno=NULL,
         warning("No gene annotation provided.")
     } else if (!is.null(anno) && !is.null(x$genes)) {
         anno <- cbind(anno, x$genes)
-        anno <- anno[!duplicated(names(anno))]
+        anno <- anno[,!duplicated(names(anno))]
     } else if (!is.null(x$genes)) {
         anno <- x$genes
     }
@@ -669,7 +669,7 @@ glMDPlot.MArrayLM <- function(x, counts=NULL, anno=NULL,
         warning("No gene annotation provided.")
     } else if (!is.null(anno) && !is.null(x$genes)) {
         anno <- cbind(anno, x$genes)
-        anno <- anno[!duplicated(names(anno))]
+        anno <- anno[,!duplicated(names(anno))]
     } else if (!is.null(x$genes)) {
         anno <- x$genes
     }
