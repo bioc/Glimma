@@ -45,3 +45,18 @@ pathMaker <- function(path) {
 rmDuplicateCols <- function(x) {
     x[, !duplicated(names(x))]
 }
+
+makeUnique <- function(x) {
+    x <- as.character(x)
+
+    dupes <- x[duplicated(x)]
+    dupes <- unique(dupes)
+
+    for(d in dupes) {
+        dupe_ind <- x == d
+        n_dupe <- sum(dupe_ind)
+        x[dupe_ind] <- paste(x[dupe_ind], 1:n_dupe, sep=".")
+    }
+
+    x
+}

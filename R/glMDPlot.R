@@ -121,10 +121,8 @@ glMDPlot.default <- function(x, xval, yval, counts=NULL, anno=NULL,
 
     checkThat(length(status), sameAs(nrow(x)))
 
-    if (id.column %in% colnames(x)) {
-        checkThat(x[[id.column]], isUnique)
-    } else if (id.column %in% colnames(anno)) {
-        checkThat(anno[[id.column]], isUnique)
+    if (id.column %in% union(colnames(anno), colnames(x))) {
+
     } else {
         stop(paste("column", quotify(id.column), "cannot be found in x or anno."))
     }
@@ -134,6 +132,12 @@ glMDPlot.default <- function(x, xval, yval, counts=NULL, anno=NULL,
 
     ##
     # Value initialisation
+
+    if (id.column %in% colnames(x)) {
+        x[[id.column]] <- makeUnique(x[[id.column]])
+    } else if (id.column %in% colnames(anno)) {
+        anno[[id.column]] <- makeUnique(anno[[id.column]])
+    }
 
     cols <- convertColsToHex(cols)
 
