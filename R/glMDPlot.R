@@ -119,6 +119,8 @@ glMDPlot.default <- function(x, xval, yval, counts=NULL, anno=NULL,
     checkThat(length(status), sameAs(nrow(x)))
 
     if (!is.null(anno)) {
+        checkThat(nrow(anno), notNull)
+        checkThat(nrow(x), notNull)
         checkThat(nrow(anno), sameAs(nrow(x)))
     }
 
@@ -292,6 +294,8 @@ glMDPlot.DGELRT <- function(x, counts=NULL, anno=NULL,
     checkThat(length(status), sameAs(nrow(x)))
 
     if (!is.null(anno)) {
+        checkThat(nrow(anno), notNull)
+        checkThat(nrow(x), notNull)
         checkThat(nrow(anno), sameAs(nrow(x)))
     }
 
@@ -492,6 +496,8 @@ glMDPlot.MArrayLM <- function(x, counts=NULL, anno=NULL,
     }
 
     if (!is.null(anno)) {
+        checkThat(nrow(anno), notNull)
+        checkThat(nrow(x), notNull)
         checkThat(nrow(anno), sameAs(nrow(x)))
     }
 
