@@ -37,9 +37,8 @@ Displays within Glimma were inspired by visualisations from {\it Degust} softwar
 \end{figure}
 
 The main dataset used in this vignette is taken from an RNA-seq experiment examining lymphoma cell-lines in mice with alterations to the Smchd1 gene \cite{Smchd1}. The data is available for 4 wildtype samples and 3 samples with null levels of Smchd1. The count data is available within Glimma and is stored as a {\sf DGEList} object that is native to edgeR. In our analysis, we begin by removing lowly expressed genes and by performing TMM-normalisation \cite{tmm}.
-
-<<HideBrowseURL, echo=false, result=hide>>=
-browseURL <- function(...) invisible()
+<<supressBrowser, eval=TRUE, echo=FALSE, results=hide>>=
+options(browser="false")
 @
 
 <<Rgetstarted>>=

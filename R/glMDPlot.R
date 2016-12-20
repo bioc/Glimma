@@ -490,7 +490,7 @@ glMDPlot.MArrayLM <- function(x, counts=NULL, anno=NULL,
     checkCountsAndSamples(counts, samples, side.log)
 
     # Assign side.main column from rowname of counts if required
-    if (not.null(counts) && side.main %!in% union(names(x), names(anno))) {
+    if (not.null(counts) && side.main %!in% union(names(x$genes), names(anno))) {
         geneIds <- rownames(counts)
         if (is.null(anno)) {
             anno <- data.frame(geneIds)
@@ -662,6 +662,7 @@ glMDPlot.DESeqDataSet <- function(x, counts=NULL, anno, groups, samples,
 
     checkObjAnnoCountsShapes(anno, counts, x)
     checkCountsAndSamples(counts, samples, side.log)
+
     if (not.null(counts)) checkSideMainPresent(side.main, anno, x)
 
     #
@@ -952,6 +953,14 @@ checkObjAnnoCountsShapes <- function(anno, counts, x) {
 checkSideMainPresent <- function(side.main, anno, x) {
     if (class(x) == "DGELRT" || class(x) == "DGEExact") {
         if (side.main %!in% union(colnames(anno), colnames(x$table))) {
+            stop(paste("column", quotify(side.main), "cannot be found in x$table or anno."))
+        }
+    } else if (class(x) == "MArrayLM") {
+        if (side.main %!in% union(colnames(anno), colnames(x$genes))) {
+            stop(paste("column", quotify(side.main), "cannot be found in x$genes or anno."))
+        }
+    } else if (class(x) == "DESeqResults") {
+        if (side.main %!in% union(colnames(anno), names(listData))) {
             stop(paste("column", quotify(side.main), "cannot be found in x or anno."))
         }
     } else {
