@@ -1,11 +1,21 @@
 context("Test MD Plot")
 
-test_that("MD Plot runs for voom", {
-    load("test_data_voom.rda")
+test_that("Helper functions run as expected", {
+    status <- c(0, 1, -1)
+    cols <- c("blue", "black", "red")
 
+    expect_equal(convertStatusToCols(status, cols), c("black", "red", "blue"))
+    expect_equal(initialiseGroups(5), 1:5)
+    expect_equal(initialiseGroups(NULL), NULL)
+})
+
+test_that("MD Plot runs for voom", {
+    load("test_data_voom.RData")
     counts <- counts$counts
     display.columns <- c("Symbols", "GeneID")
 
+    expect_silent(glMDPlot(fit, counts=counts, launch=FALSE))
+    expect_silent(glMDPlot(fit, counts=counts, status=is.de, launch=FALSE))
     expect_silent(glMDPlot(fit, counts=counts, anno=geneanno, launch=FALSE))
 
     expect_silent(
@@ -20,12 +30,13 @@ test_that("MD Plot runs for voom", {
 })
 
 test_that("MD Plot runs for DGELRT", {
-    load("test_data_DGELRT.rda")
-
+    load("test_data_DGELRT.RData")
     counts <- counts$counts
     display.columns <- c("Symbols", "GeneID")
 
     expect_silent(glMDPlot(qlf, anno=geneanno, main="MDPlot", launch=FALSE))
+
+    expect_silent(glMDPlot(qlf, counts=counts, main="MDPlot", launch=FALSE))
 
     expect_silent(glMDPlot(qlf, counts=counts, anno=geneanno,
             samples=1:6, status=is.de, main="MDPlot", launch=FALSE))
@@ -38,8 +49,7 @@ test_that("MD Plot runs for DGELRT", {
 })
 
 test_that("MD Plot runs for DGEExact", {
-    load("test_data_DGEExact.rda")
-
+    load("test_data_DGEExact.RData")
     counts <- counts$counts
     display.columns <- c("Symbols", "GeneID")
 

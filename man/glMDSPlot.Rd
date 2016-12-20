@@ -7,15 +7,22 @@
 glMDSPlot(x, ...)
 }
 \arguments{
-\item{x}{the data.frame containing data to plot.}
+\item{x}{the matrix containing the gene expressions.}
 
-\item{...}{additional arguments affecting the plots produced. See specific methods for detailed arguments.}
+\item{...}{additional arguments.}
 }
 \value{
-Draws a two-panel interactive MDS plot in an html page. The left panel contains the plot between two MDS dimensions, with annotations displayed on hover. The right panel contains a bar plot of the eigenvalues of each dimension, clicking on any of the bars will plot the corresponding dimension against the next dimension.
+Draws a two-panel interactive MDS plot in an html page. The left
+  panel contains the plot between two MDS dimensions, with annotations
+  displayed on hover. The right panel contains a bar plot of the eigenvalues
+  of each dimension, clicking on any of the bars will plot the corresponding
+  dimension against the next dimension.
 }
 \description{
-Draw an interactive MDS plot gene expression matrix with distances calculated from most variable genes.
+Glimma MDS Plot
+
+Draw an interactive MD plot from a DGEList object with distances calculated
+from most variable genes.
 }
 \examples{
 data(lymphomaRNAseq)
