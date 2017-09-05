@@ -47,7 +47,8 @@ makeJson.factor <- function(sample.groups) {
 # Function to make json object out of a lists
 makeJson.list <- function(x, ...) {
     list_names <- names(x)
-    vals <- sapply(x, function(d) { toJSON(d, auto_unbox=TRUE, na="string") })
+    vals <- sapply(x, function(d) { jsonlite::toJSON(d, auto_unbox=TRUE, na="string", use_signif=TRUE) })
+
     output <- paste(paste(quotify(list_names), vals, sep=":"), collapse=",")
 
     paste("{", output, "}", sep="")
@@ -59,48 +60,60 @@ makeJson.list <- function(x, ...) {
 #'
 #' @param df the data.frame to be converted into JSON
 #' @param convert.logical whether to convert logicals into strings "TRUE" and "FALSE"
+#' @param dataframe how to encode data.frame objects: must be one of 'rows', 'columns'
 #'
 #' @return a stringified JSON, the data.frame is encoded as a vector of objects,
 #' with each column being one object with keys corresponding to column names.
 #'
 #' @importFrom methods is
 
-makeJson.data.frame <- function(df, convert.logical=TRUE) {
+makeJson.data.frame <- function(
+    df,
+    convert.logical = TRUE,
+    dataframe = c("rows", "columns")
+) {
+    dataframe <- match.arg(dataframe)
+
     if (convert.logical) {
         logicalCols <- getLogicalCols(df)
 
         for (i in which(logicalCols)) {
-            df[, i] <- convertLogical(df[, i])
+            df[, i] <- as.character(df[, i])
         }
     }
 
-    output <- toJSON(df, auto_unbox=TRUE, na="string")
+    # don't need rownames in our JSON object
+    rownames(df) <- NULL
+    output <- jsonlite::toJSON(
+        df,
+        auto_unbox = TRUE,
+        na = "string",
+        use_signif = TRUE,
+        dataframe = dataframe
+    )
     class(output) <- "json"
 
-    # Outputs [{"col1": val1.1, "col2": val1.2,...},
-    #          {"col1": val2.1, "col2": val2.2,...},
-    #          ...]
     output
 }
 
-convertLogical <- function(x) {
-    as.character(x)
+makeJson.default <- function(x, ...) {
+    jsonlite::toJSON(x, auto_unbox=TRUE, use_signif=TRUE, na="string")
 }
 
 makeJson.character <- function(x, ...) {
-    toJSON(x, auto_unbox=TRUE, na="string")
+    jsonlite::toJSON(x, auto_unbox=TRUE, na="string")
 }
 
 makeJson.numeric <- function(x, ...) {
-    toJSON(x, auto_unbox=TRUE, na="string")
+    jsonlite::toJSON(x, auto_unbox=TRUE, use_signif = TRUE, na="string")
 }
 
 makeJson.logical <- function(x, ...) {
-    toJSON(x, auto_unbox=TRUE, na="string")
+    jsonlite::toJSON(x, auto_unbox=TRUE, na="string")
 }
 
 makeJson.NULL <- function(x, ...) {
-    toJSON(rep("null", length(x)))
+    jsonlite::toJSON(rep("null", length(x)))
 }
 
 # Function to add square brackets around string

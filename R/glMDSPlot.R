@@ -42,11 +42,19 @@ glMDSPlot <- function(x, ...) {
 #' @export
 
 # Code taken from plotMDS of limma bioConductor package with alterations
-glMDSPlot.default <- function(x, top=500, labels=1:ncol(x),
-                            groups=rep(1, ncol(x)), gene.selection="pairwise",
-                            main="MDS Plot", path=getwd(),
-                            folder="glimma-plots", html="MDS-Plot",
-                            launch=TRUE, ...) {
+glMDSPlot.default <- function(
+    x,
+    top = 500,
+    labels = 1:ncol(x),
+    groups = rep(1, ncol(x)),
+    gene.selection = c("pairwise", "common"),
+    main  ="MDS Plot",
+    path = getwd(),
+    folder = "glimma-plots",
+    html = "MDS-Plot",
+    launch = TRUE,
+    ...
+) {
     #   Multi-dimensional scaling with top-distance
     #   Di Wu and Gordon Smyth
     #   19 March 2009.  Last modified 14 Jan 2015
@@ -76,8 +84,6 @@ glMDSPlot.default <- function(x, top=500, labels=1:ncol(x),
     #
     ##
 
-    plot.title <- quotify(main)
-
     gene.selection <- match.arg(gene.selection, c("pairwise", "common"))
 
     # Distance matrix from pairwise leading fold changes
@@ -87,22 +93,22 @@ glMDSPlot.default <- function(x, top=500, labels=1:ncol(x),
         topindex <- nprobes - top + 1L
         for (i in 2L:(nsamples)) {
             for (j in 1L:(i - 1L)) {
-                dist <- sort.int((getCols(x, i) - getCols(x, j))^2, partial=topindex)
-                topdist <- dist[topindex:nprobes]
+                dists <- (getCols(x, i) - getCols(x, j))^2
+                dists <- sort.int(dists, partial = topindex )
+                topdist <- dists[topindex:nprobes]
                 dd[i, j] <- sqrt(mean(topdist))
             }
         }
     } else {
     # Same genes used for all comparisons
         if (nprobes > top) {
-            s <- rowMeans((x-rowMeans(x))^2)
-            o <- order(s, decreasing=TRUE)
+            o <- order(rowMeans( (x-rowMeans(x))^2 ), decreasing=TRUE)
             x <- getRows(x, o[1L:top])
         }
-        for (i in 2L:(nsamples))
-            dist <- sqrt(colMeans( (x[, i]-x[, 1:(i-1), drop=FALSE])^2 ))
-            dd[i, 1L:(i-1L)] <- dist
-        axislabel <- "Principal Component"
+        for (i in 2L:(nsamples)) {
+            dists <- (x[, i] - x[, 1:(i-1), drop=FALSE]) ^ 2
+            dd[i, 1L:(i-1L)] <- sqrt(colMeans(dists))
+        }
     }
 
     # Multi-dimensional scaling
@@ -116,33 +122,62 @@ glMDSPlot.default <- function(x, top=500, labels=1:ncol(x),
         groups <- data.frame(groups)
     }
 
-    all.col.names <- colnames(groups)
-    first.col.name <- all.col.names[1]
+    all_col_names <- colnames(groups)
+    first_col_name <- all_col_names[1]
 
     points <- data.frame(points)
     names(points) <- paste0("dim", 1:ncol(points))
     points <- data.frame(points, label=labels, groups)
 
-    eigen <- data.frame(name = 1:min(ndim, 8),
-                        eigen = round(a1$eig[1:min(ndim, 8)]/sum(a1$eig), 2))
+    eigen <- data.frame(
+        name = 1:min(ndim, 8),
+        eigen = round(a1$eig[1:min(ndim, 8)]/sum(a1$eig), 2)
+    )
 
-    plot1 <- glScatter(points, xval="dim1", yval="dim2", point.size=4,
-                        xlab="Dimension 1", ylab="Dimension 2",
-                        annot=c("label", all.col.names, "dim1", "dim2"),
-                        colval=first.col.name, main=main,
-                        info=list(groupsNames=colnames(groups)))
+    plot1 <- glScatter(
+        points,
+        xval = "dim1",
+        yval = "dim2",
+        point.size = 4,
+        xlab = "Dimension 1",
+        ylab = "Dimension 2",
+        annot = c("label", all_col_names, "dim1", "dim2"),
+        colval = first_col_name,
+        main = main,
+        info = list(groupsNames=colnames(groups))
+    )
 
-    plot2 <- glBar(eigen, names.arg="name", yval="eigen",
-                    main="Variance Explained",
-                    xlab="Dimension", ylab="Proportion",
-                    height=300, width=300, info=list(dims=ndim))
+    plot2 <- glBar(
+        eigen,
+        names.arg = "name",
+        yval = "eigen",
+        main = "Variance Explained",
+        xlab = "Dimension",
+        ylab = "Proportion",
+        height = 300,
+        width = 300,
+        info = list(dims = ndim)
+    )
 
     link1 <- gllink(2, 1, flag="mds")
-    link2 <- gltablink(1,1, action = "highlightById")
+    link2 <- gltablink(1, 1, action="highlightById")
     table1 <- glTable(1, c("label", intersect(plot1$anno, colnames(groups))))
 
-    glimma(plot1, plot2, link1, table1, link2, layout=c(1, 2), overwrite=TRUE,
-            path=path, folder=folder, html=html, launch=launch)
+    glimma(
+        plot1,
+        plot2,
+        link1,
+        table1,
+        link2,
+        layout = c(1, 2),
+        overwrite = TRUE,
+        path = path,
+        folder = folder,
+        html = html,
+        launch = launch
+    )
+
+    invisible(a1)
 }
 
 #' Glimma MDS Plot
@@ -153,23 +188,44 @@ glMDSPlot.default <- function(x, top=500, labels=1:ncol(x),
 #'
 #' @inheritParams glMDSPlot.default
 #' @param x the DGEList containing the gene expressions.
+#' @param prior.count average count to be added to each observation to avoid taking log of zero. Used only if log=TRUE.
 #'
 #' @template return_glMDSPlot
 #'
 #' @method glMDSPlot DGEList
 #'
 #' @export
-glMDSPlot.DGEList <- function (x, top=500, labels=NULL,
-                            groups=rep(1, ncol(x)), gene.selection="pairwise",
-                            main="MDS Plot", path=getwd(),
-                            folder="glimma-plots", html="MDS-Plot",
-                            launch=TRUE, ...) {
-    labels <- getLabels(x, labels)
-    transformedCounts <- edgeR::cpm(x, log=TRUE)
 
-    glMDSPlot.default(transformedCounts, top=500, labels=labels, groups=groups,
-                    gene.selection="pairwise", main=main, path=path,
-                    folder=folder, html=html, launch=launch, ...)
+glMDSPlot.DGEList <- function (
+    x,
+    top = 500,
+    labels = NULL,
+    groups = rep(1, ncol(x)),
+    gene.selection = c("pairwise", "common"),
+    prior.count = 0.25,
+    main = "MDS Plot",
+    path = getwd(),
+    folder = "glimma-plots",
+    html = "MDS-Plot",
+    launch = TRUE,
+    ...
+) {
+    labels <- getLabels(x, labels)
+    transformed_counts <- edgeR::cpm(x, log=TRUE, prior.count = prior.count)
+
+    glMDSPlot.default(
+        transformed_counts,
+        top = top,
+        labels = labels,
+        groups = groups,
+        gene.selection = gene.selection,
+        main = main,
+        path = path,
+        folder = folder,
+        html = html,
+        launch = launch,
+        ...
+    )
 }
 
 #' Glimma MDS Plot
@@ -180,19 +236,33 @@ glMDSPlot.DGEList <- function (x, top=500, labels=NULL,
 #'
 #' @inheritParams glMDSPlot.default
 #' @param x the DESeqDataSet containing the gene expressions.
+#' @param prior.count average count to be added to each observation to avoid taking log of zero. Used only if log=TRUE.
 #'
 #' @template return_glMDSPlot
 #'
 #' @method glMDSPlot DESeqDataSet
 #'
 #' @export
-glMDSPlot.DESeqDataSet <- function(x, top=500, labels=NULL,
-                            groups=NULL, gene.selection="pairwise",
-                            main="MDS Plot", path=getwd(),
-                            folder="glimma-plots", html="MDS-Plot",
-                            launch=TRUE, ...) {
+glMDSPlot.DESeqDataSet <- function(
+    x,
+    top = 500,
+    labels = NULL,
+    groups = NULL,
+    gene.selection = c("pairwise", "common"),
+    prior.count = 0.25,
+    main = "MDS Plot",
+    path = getwd(),
+    folder = "glimma-plots",
+    html = "MDS-Plot",
+    launch = TRUE,
+    ...
+) {
     labels <- getLabels(x, labels)
-    transformedCounts <- edgeR::cpm(DESeq2::counts(x), log=TRUE)
+    transformed_counts <- edgeR::cpm(
+        DESeq2::counts(x),
+        log = TRUE,
+        prior.count = prior.count
+    )
 
     if (is.null(groups)) {
         if (not.null(x@colData)) {
@@ -202,50 +272,21 @@ glMDSPlot.DESeqDataSet <- function(x, top=500, labels=NULL,
         }
     }
 
-    glMDSPlot.default(transformedCounts, top=500, labels=labels, groups=groups,
-                    gene.selection="pairwise", main=main, path=path,
-                    folder=folder, html=html, launch=launch, ...)
-}
 
-#' Glimma MDS Plot
-#'
-#' @template desc_glMDSPlot
-#'
-#' @author Shian Su, Gordon Smyth, Stuart Lee
-#'
-#' @inheritParams glMDSPlot.default
-#' @param x the SCESet containing the gene expressions.
-#'
-#' @template return_glMDSPlot
-#'
-#' @method glMDSPlot SCESet
-#'
-#' @export
-glMDSPlot.SCESet <- function (x, top=500, labels=NULL,
-								groups=NULL, gene.selection="pairwise",
-								main="MDS Plot", path=getwd(),
-								folder="glimma-plots", html="MDS-Plot",
-								launch=TRUE, ...) {
 
-	transformedCounts <- edgeR::cpm(scater::counts(x), log=TRUE)
-
-	if (not.null(Biobase::sampleNames(x))) {
-		labels <- Biobase::sampleNames(x)
-	} else {
-		labels <- 1:ncol(transformedCounts)
-	}
-
-	if (is.null(groups)) {
-		if (not.null(Biobase::pData(x))) {
-			groups <- Biobase::pData(x)
-		} else {
-			groups <- rep(1, ncol(transformedCounts))
-		}
-	}
-
-	glMDSPlot.default(transformedCounts, top=500, labels=labels, groups=groups,
-					  gene.selection="pairwise", main=main, path=path,
-					  folder=folder, html=html, launch=launch, ...)
+    glMDSPlot.default(
+        transformed_counts,
+        top = top,
+        labels = labels,
+        groups = groups,
+        gene.selection = gene.selection,
+        main = main,
+        path = path,
+        folder = folder,
+        html = html,
+        launch = launch,
+        ...
+    )
 }
 
 getLabels <- function(x, labels) {
