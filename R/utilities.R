@@ -6,7 +6,7 @@ printJsonToFile <- function(json, filename, varname) {
         stop("json vector must be same length as varname vector")
     }
 
-    for (i in 1:length(json)) {
+    for (i in seq_along(json)) {
         write(paste0("var ", varname[i], " = ", json[i], ";"), file=file.con,
                     sep=" ", append=TRUE)
     }
@@ -14,7 +14,7 @@ printJsonToFile <- function(json, filename, varname) {
     close(file.con)
 }
 
-# Function to return filepaths
+# function to return filepaths
 pathMaker <- function(path) {
     if (char(path, -1) != "/") {
         stop("path must end with /")
@@ -23,12 +23,15 @@ pathMaker <- function(path) {
     return ( function (x) { return(paste0(path, x)) } )
 }
 
+# removes columns with the same name
 rmDuplicateCols <- function(x) {
     x[, !duplicated(names(x))]
 }
 
+# appends enumeration to duplicated values in vector
 makeUnique <- function(x) {
     x <- as.character(x)
+    x[is.na(x)] <- "NA"
 
     dupes <- x[duplicated(x)]
     dupes <- unique(dupes)
@@ -42,16 +45,30 @@ makeUnique <- function(x) {
     x
 }
 
-"%!in%" <- function(x, y)!("%in%"(x, y))
+# not in operator
+"%!in%" <- function(x, y) !("%in%"(x, y))
 
+# get row of matrix
 getRows <- function(x, inds) {
     x[inds, , drop=FALSE]
 }
 
+# get column of matrix
 getCols <- function(x, inds) {
     x[, inds, drop=FALSE]
 }
 
+# not null check
 not.null <- function(x) {
     !is.null(x)
+}
+
+# sequence along 1:nrow(x)
+seq_rows <- function(x) {
+    seq_len(nrow(x))
+}
+
+# sequence along 1:ncol(x)
+seq_cols <- function(x) {
+    seq_len(ncol(x))
 }

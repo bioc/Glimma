@@ -8,6 +8,7 @@ test_that("char extraction", {
 test_that("unique conversion works", {
     expect_equal(makeUnique(c(1, 1, 2)), c("1.1", "1.2", "2"))
     expect_equal(makeUnique(c("a", "a", "b")), c("a.1", "a.2", "b"))
+    expect_equal(makeUnique(c(NA, NA)), c("NA.1", "NA.2"))
 })
 
 test_that("Row and column extractions work", {
@@ -25,4 +26,12 @@ test_that("path maker works", {
 
     expect_equal(p_maker("to"), "path/to")
     expect_equal(p_maker("to/elsewhere"), "path/to/elsewhere")
+})
+
+test_that("seq_along variants work", {
+    data(mtcars)
+
+    expect_identical(seq_rows(mtcars), 1:32)
+
+    expect_identical(seq_cols(mtcars), 1:11)
 })
