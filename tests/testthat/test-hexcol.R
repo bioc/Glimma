@@ -16,5 +16,13 @@ test_that("hex colour tools are correct", {
 
     expect_warning(as.hexcol(0))
     expect_equal(as.hexcol(1), "#000000")
-    expect_equal(as.hexcol(2), "#ff0000")
+
+    # R changed default palette in 4.0.0
+    Rver <- with(R.Version(), paste(major, minor, sep = "."))
+    post_4.0 <- compareVersion(Rver, "4.0.0") >= 0
+    if (post_4.0) {
+        expect_equal(as.hexcol(2), "#df536b")
+    } else {
+        expect_equal(as.hexcol(2), "#ff0000")
+    }
 })
