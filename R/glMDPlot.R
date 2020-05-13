@@ -520,6 +520,7 @@ glMDPlot.MArrayLM <- function(
 #'
 #' @method glMDPlot DESeqDataSet
 #'
+#' @import BiocGenerics
 #' @importFrom methods is
 #' @importFrom edgeR cpm
 #'
@@ -673,6 +674,7 @@ glMDPlot.DESeqDataSet <- function(
 #'
 #' @method glMDPlot DESeqResults
 #'
+#' @import BiocGenerics
 #' @importFrom methods is
 #' @importFrom edgeR cpm
 #'

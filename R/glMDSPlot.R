@@ -243,6 +243,8 @@ glMDSPlot.DGEList <- function (
 #'
 #' @method glMDSPlot DESeqDataSet
 #'
+#' @import BiocGenerics
+#'
 #' @export
 glMDSPlot.DESeqDataSet <- function(
     x,
@@ -267,7 +269,7 @@ glMDSPlot.DESeqDataSet <- function(
 
     if (is.null(groups)) {
         if (not.null(SummarizedExperiment::colData(x))) {
-            groups <- S4Vectors::as.data.frame.DataTable(SummarizedExperiment::colData(x))
+            groups <- as.data.frame(SummarizedExperiment::colData(x))
         } else {
             groups <- rep(1, ncol(x))
         }
