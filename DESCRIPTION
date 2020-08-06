@@ -1,8 +1,8 @@
 Package: Glimma
 Type: Package
 Title: Interactive HTML graphics
-Version: 1.15.5
-Date: 2016-12-21
+Version: 1.17.2
+Date: 2020-05-12
 Authors@R: 
     c(
         person(
@@ -39,7 +39,7 @@ Imports:
     jsonlite,
     methods,
     stats,
-    S4Vectors,
+    BiocGenerics,
     utils
 Suggests:
     BiocStyle,

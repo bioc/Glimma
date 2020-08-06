@@ -25,7 +25,6 @@ test_that("MDS Plot runs for DGEList", {
 
 test_that("MDS Plot runs for DESeqDataSet", {
     library(DESeq2)
-    library(S4Vectors)
     load("pasilla.RData")
     rownames(colData) <- sub("fb", "", rownames(colData))
     dds <- DESeqDataSetFromMatrix(countData = countData,
