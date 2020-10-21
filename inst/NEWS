@@ -1,3 +1,10 @@
+Changes in Glimma 2.0.0
+  * Brand new backend and API with major changes
+  * Plots can now be embedded in html reports
+  * Plots can now be saved
+  * Data from gene annotation and counts can now be saved
+  * Added many plot customisation options in MDS plot
+
 Changes in Glimma 1.9.4
 
   * Fixed tests for R4.0.0

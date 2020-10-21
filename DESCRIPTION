@@ -1,14 +1,21 @@
 Package: Glimma
 Type: Package
 Title: Interactive HTML graphics
-Version: 1.17.2
-Date: 2020-05-12
+Version: 2.0.0
 Authors@R: 
     c(
         person(
             "Shian", "Su",
             role = c("aut", "cre"),
             email = "su.s@wehi.edu.au"
+        ),
+        person(
+            "Hasaru", "Kariyawasam",
+            role = c("aut")
+        ),
+        person(
+            "Oliver", "Voogd",
+            role = c("aut")
         ),
         person(
             "Matthew", "Ritchie",
@@ -21,9 +28,15 @@ Authors@R:
         person(
             "Stuart", "Lee",
             role = c("ctb")
+        ),
+        person(
+            "Isaac", "Virshup",
+            role = c("ctb")
         )
-    )        
+    )
 Description: This package generates interactive visualisations for analysis of RNA-sequencing data using output from limma, edgeR or DESeq2 packages in an HTML page. The interactions are built on top of the popular static representations of analysis results in order to provide additional information.
+Encoding: UTF-8
+RoxygenNote: 7.1.1
 biocViews:
     DifferentialExpression,
     GeneExpression,
@@ -32,31 +45,28 @@ biocViews:
     RNASeq,
     Sequencing,
     Visualization
-Depends: R (>= 3.4.0)
+Depends:
+  R (>= 4.0.0)
 Imports:
+    htmlwidgets,
     edgeR,
-    grDevices,
-    jsonlite,
-    methods,
-    stats,
-    BiocGenerics,
-    utils
-Suggests:
-    BiocStyle,
-    IRanges,
-    GenomicRanges,
-    SummarizedExperiment,
     DESeq2,
     limma,
+    SummarizedExperiment,
+    stats,
+    jsonlite,
+    methods,
+    S4Vectors
+Suggests:
     testthat,
     knitr,
     rmarkdown,
+    BiocStyle,
+    IRanges,
+    GenomicRanges,
     pryr
-License: GPL-3 | file LICENSE
-URL: https://github.com/Shians/Glimma
-BugReports: https://github.com/Shians/Glimma/issues
-RoxygenNote: 7.1.0
-NeedsCompilation: no
+License: GPL-3
+URL: https://github.com/hasaru-k/GlimmaV2
+BugReports: https://github.com/hasaru-k/GlimmaV2/issues
 LazyData: true
 VignetteBuilder: knitr
-Encoding: UTF-8

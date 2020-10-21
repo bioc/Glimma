@@ -1,0 +1,228 @@
+#' Glimma Volcano Plot
+#'
+#' Generic function for drawing a two-panel interactive volcano plot, a special case of the
+#' glimmaXY plot.
+#' The function invokes the following methods which depend on the class of the first argument:
+#' \itemize{
+#'   \item \code{\link{glimmaVolcano.MArrayLM}} for limma analysis
+#'   \item \code{\link{glimmaVolcano.DGEExact}} for edgeR analysis, produced from \code{\link{exactTest}}
+#'   \item \code{\link{glimmaVolcano.DGELRT}} for edgeR analysis, produced from \code{\link{glmLRT}}
+#'   \item \code{\link{glimmaVolcano.DESeqDataSet}} for DESeq2 analysis }
+#'
+#' @param x the DE object to plot.
+#' @param ... additional arguments affecting the plots produced. See specific methods for detailed arguments.
+#' @eval volcano_details()
+#'
+#' @examples
+#' dge <- readRDS(
+#'   system.file("RNAseq123/dge.rds", package = "Glimma"))
+#' design <- readRDS(
+#'   system.file("RNAseq123/design.rds", package = "Glimma"))
+#' contr.matrix <- readRDS(
+#'   system.file("RNAseq123/contr.matrix.rds", package = "Glimma"))
+#'
+#' v <- limma::voom(dge, design)
+#' vfit <- limma::lmFit(v, design)
+#' vfit <- limma::contrasts.fit(vfit, contrasts = contr.matrix)
+#' efit <- limma::eBayes(vfit)
+#'
+#' glimmaVolcano(efit, dge = dge)
+#'
+#' @export
+glimmaVolcano <- function(x, ...)
+{
+  UseMethod("glimmaVolcano")
+}
+
+#' Glimma Volcano Plot
+#'
+#' Draws a two-panel interactive volcano plot from an MArrayLM object. This is a special case of the
+#' \code{glimmaXY} plot.
+#'
+#' @inheritParams glimmaMA.MArrayLM
+#' @seealso \code{\link{glimmaVolcano}}, \code{\link{glimmaVolcano.DGEExact}}, \code{\link{glimmaVolcano.DGELRT}}, \code{\link{glimmaVolcano.DESeqDataSet}}
+#' @eval volcano_details()
+#' @importFrom limma decideTests
+#' @export
+glimmaVolcano.MArrayLM <- function(
+  x,
+  dge = NULL,
+  counts=dge$counts,
+  groups=dge$samples$group,
+  coef=ncol(x$coefficients),
+  status=limma::decideTests(x),
+  anno=x$genes,
+  display.columns = NULL,
+  status.cols=c("dodgerblue", "silver", "firebrick"),
+  sample.cols=NULL,
+  p.adj.method = "BH",
+  transform.counts = c("logcpm", "cpm", "rpkm", "none"),
+  main=colnames(x)[coef],
+  xlab="logFC",
+  ylab="negLog10PValue",
+  html=NULL,
+  width = 920,
+  height = 920)
+{
+  transform.counts <- match.arg(transform.counts)
+  table <- data.frame(signif(unname(x$coefficients[, coef]), digits=4),
+                      signif( -log10(x$p.value[, coef]), digits=4))
+  colnames(table) <- c(xlab, ylab)
+  logCPM <- signif(unname(x$Amean), digits=4)
+  AdjPValue <- signif(stats::p.adjust(x$p.value[, coef], method=p.adj.method), digits=4)
+  table <- cbind(table, logCPM=logCPM, AdjPValue=AdjPValue)
+  table <- cbind(gene=rownames(x), table)
+  if (is.matrix(status)) status <- status[, coef]
+  xData <- buildXYData(table, status, main, display.columns, anno, counts, xlab, ylab, status.cols, sample.cols, groups, transform.counts)
+  return(glimmaXYWidget(xData, width, height, html))
+}
+
+#' Glimma Volcano Plot
+#'
+#' Draws a two-panel interactive volcano plot from an DGEExact object. This is a special case of the
+#' \code{glimmaXY} plot.
+#'
+#' @inheritParams glimmaMA.DGEExact
+#' @seealso \code{\link{glimmaVolcano}}, \code{\link{glimmaVolcano.MArrayLM}}, \code{\link{glimmaVolcano.DGELRT}}, \code{\link{glimmaVolcano.DESeqDataSet}}
+#' @eval volcano_details()
+#'
+#' @examples
+#' dge <- readRDS(
+#'   system.file("RNAseq123/dge.rds", package = "Glimma"))
+#' design <- readRDS(
+#'   system.file("RNAseq123/design.rds", package = "Glimma"))
+#' contr.matrix <- readRDS(
+#'   system.file("RNAseq123/contr.matrix.rds", package = "Glimma"))
+#'
+#' dge <- edgeR::estimateDisp(dge, design)
+#' gfit <- edgeR::glmFit(dge, design)
+#' glrt <- edgeR::glmLRT(gfit, design, contrast = contr.matrix)
+#'
+#' glimmaVolcano(glrt, dge = dge)
+#'
+#' @importFrom edgeR decideTestsDGE
+#' @importFrom stats p.adjust
+#' @export
+glimmaVolcano.DGEExact <- function(
+  x,
+  dge=NULL,
+  counts=dge$counts,
+  groups=dge$samples$group,
+  status=edgeR::decideTestsDGE(x),
+  anno=x$genes,
+  display.columns = NULL,
+  status.cols=c("dodgerblue", "silver", "firebrick"),
+  sample.cols=NULL,
+  p.adj.method = "BH",
+  transform.counts = c("logcpm", "cpm", "rpkm", "none"),
+  main=paste(x$comparison[2],"vs",x$comparison[1]),
+  xlab="logFC",
+  ylab="negLog10PValue",
+  html=NULL,
+  width = 920,
+  height = 920)
+{
+  transform.counts <- match.arg(transform.counts)
+  # create initial table with -log10(pvalue) and logFC features
+  table <- data.frame(signif(x$table$logFC, digits=4),
+                      signif(-log10(x$table$PValue), digits=4))
+  colnames(table) <- c(xlab, ylab)
+  AdjPValue <- signif(stats::p.adjust(x$table$PValue, method=p.adj.method), digits=4)
+  logCPM <- signif(x$table$logCPM, digits=4)
+  table <- cbind(table, logCPM=logCPM, AdjPValue=AdjPValue)
+  table <- cbind(gene=rownames(x), table)
+  xData <- buildXYData(table, status, main, display.columns, anno, counts, xlab, ylab, status.cols, sample.cols, groups, transform.counts)
+  return(glimmaXYWidget(xData, width, height, html))
+}
+
+#' Glimma Volcano Plot
+#'
+#' Draws a two-panel interactive volcano plot from an DGELRT object. This is a special case of the
+#' \code{glimmaXY} plot.
+#'
+#' @inheritParams glimmaMA.DGELRT
+#' @seealso \code{\link{glimmaVolcano}}, \code{\link{glimmaVolcano.MArrayLM}}, \code{\link{glimmaVolcano.DGEExact}}, \code{\link{glimmaVolcano.DESeqDataSet}}
+#' @eval volcano_details()
+#' @importFrom edgeR decideTestsDGE
+#' @importFrom stats p.adjust
+#' @export
+glimmaVolcano.DGELRT <- glimmaVolcano.DGEExact
+
+#' Glimma Volcano Plot
+#'
+#' Draws a two-panel interactive volcano plot from an DESeqDataSet object. This is a special case of the
+#' \code{glimmaXY} plot.
+#'
+#' @inheritParams glimmaMA.DESeqDataSet
+#' @param groups vector/factor representing the experimental group for each sample; see \code{\link{extractGroups}} for default value.
+#' @seealso \code{\link{glimmaVolcano}}, \code{\link{glimmaVolcano.MArrayLM}}, \code{\link{glimmaVolcano.DGEExact}}, \code{\link{glimmaVolcano.DGELRT}}
+#' @eval volcano_details()
+#'
+#' @examples
+#' dge <- readRDS(
+#'   system.file("RNAseq123/dge.rds", package = "Glimma"))
+#'
+#' dds <- DESeq2::DESeqDataSetFromMatrix(
+#'   countData = dge$counts,
+#'   colData = dge$samples,
+#'   rowData = dge$genes,
+#'   design = ~group
+#' )
+#'
+#' dds <- DESeq2::DESeq(dds, quiet=TRUE)
+#' glimmaVolcano(dds)
+#'
+#' @importFrom DESeq2 results counts
+#' @importFrom SummarizedExperiment colData
+#' @export
+glimmaVolcano.DESeqDataSet  <- function(
+  x,
+  counts=DESeq2::counts(x),
+  groups=extractGroups(colData(x)),
+  status=NULL,
+  anno=NULL,
+  display.columns = NULL,
+  status.cols=c("dodgerblue", "silver", "firebrick"),
+  sample.cols=NULL,
+  transform.counts = c("logcpm", "cpm", "rpkm", "none"),
+  main="Volcano Plot",
+  xlab="logFC",
+  ylab="negLog10PValue",
+  html=NULL,
+  width = 920,
+  height = 920)
+{
+  transform.counts <- match.arg(transform.counts)
+  res.df <- as.data.frame(DESeq2::results(x))
+
+  # filter out genes that have missing data
+  complete_genes <- complete.cases(res.df)
+  res.df <- res.df[complete_genes, ]
+  x <- x[complete_genes, ]
+
+  # extract status if it is not given
+  if (is.null(status))
+  {
+    status <- ifelse(
+      res.df$padj < 0.05,
+      ifelse(res.df$log2FoldChange < 0, -1, 1),
+      0
+    )
+  }
+  else
+  {
+    if (length(status)!=length(complete_genes)) stop("Status vector
+      must have the same number of genes as the main arguments.")
+    status <- status[complete_genes]
+  }
+
+  # create initial table with logFC and -log10(pvalue) features
+  table <- data.frame(signif(res.df$log2FoldChange, digits=4),
+                      signif(-log10(res.df$pvalue), digits=4))
+  colnames(table) <- c(xlab, ylab)
+  table <- cbind(table, logCPM=signif(log(res.df$baseMean + 0.5), digits=4),
+                        AdjPValue=signif(res.df$padj, digits=4))
+  table <- cbind(gene=rownames(x), table)
+  xData <- buildXYData(table, status, main, display.columns, anno, counts, xlab, ylab, status.cols, sample.cols, groups, transform.counts)
+  return(glimmaXYWidget(xData, width, height, html))
+}
