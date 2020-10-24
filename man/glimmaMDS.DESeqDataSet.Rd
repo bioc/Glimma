@@ -14,7 +14,8 @@
   prior.count = 2,
   html = NULL,
   width = 900,
-  height = 500
+  height = 500,
+  ...
 )
 }
 \arguments{
@@ -41,6 +42,8 @@ raw counts are transformed to log-counts-per-million values.}
 \item{width}{numeric value indicating width of widget in pixels.}
 
 \item{height}{numeric value indicating width of widget in pixels.}
+
+\item{...}{additional unused arguments.}
 }
 \value{
 htmlwidget object or \code{NULL} if \code{html} argument is specified.

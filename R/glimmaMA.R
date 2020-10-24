@@ -76,6 +76,7 @@ glimmaMA <- function(x, ...)
 #' should be included in the file name e.g. "file.html".
 #' @param width numeric value indicating width of widget in pixels.
 #' @param height numeric value indicating width of height in pixels.
+#' @param ... addition unused arguments.
 #' @seealso \code{\link{glimmaMA}}, \code{\link{glimmaMA.DGEExact}}, \code{\link{glimmaMA.DGELRT}}, \code{\link{glimmaMA.DESeqDataSet}}
 #' @eval MA_details()
 #'
@@ -113,7 +114,8 @@ glimmaMA.MArrayLM <- function(
   ylab="logFC",
   html=NULL,
   width = 920,
-  height = 920)
+  height = 920,
+  ...)
 {
   transform.counts <- match.arg(transform.counts)
   # check if the number of rows of x and the dge object are equal
@@ -180,7 +182,8 @@ glimmaMA.DGEExact <- function(
   ylab="logFC",
   html=NULL,
   width = 920,
-  height = 920)
+  height = 920,
+  ...)
 {
   transform.counts <- match.arg(transform.counts)
   # check if the number of rows of x and the dge object are equal
@@ -257,7 +260,8 @@ glimmaMA.DESeqDataSet  <- function(
   ylab="logFC",
   html=NULL,
   width = 920,
-  height = 920)
+  height = 920,
+  ...)
 {
   transform.counts <- match.arg(transform.counts)
   res.df <- as.data.frame(DESeq2::results(x))

@@ -64,6 +64,7 @@ glimmaMDS <- function(x, ...)
 #' @param width numeric value indicating width of widget in pixels.
 #'
 #' @param height numeric value indicating width of widget in pixels.
+#' @param ... additional unused arguments.
 #'
 #' @eval MDS_details()
 #'
@@ -83,7 +84,8 @@ glimmaMDS.default <- function(
   gene.selection = c("pairwise", "common"),
   html=NULL,
   width = 900,
-  height = 500)
+  height = 500,
+  ...)
 {
 
   getCols <- function(x, inds) {
@@ -243,7 +245,8 @@ glimmaMDS.DGEList <- function(
   prior.count = 2,
   html=NULL,
   width = 900,
-  height = 500)
+  height = 500,
+  ...)
 {
 
   if (is.vector(groups) && (length(groups) != ncol(x))) {
@@ -306,7 +309,8 @@ glimmaMDS.DESeqDataSet <- function(
   prior.count = 2,
   html=NULL,
   width = 900,
-  height = 500)
+  height = 500,
+  ...)
 {
   if (is.null(labels))
   {
