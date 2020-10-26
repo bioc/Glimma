@@ -1,7 +1,7 @@
 Package: Glimma
 Type: Package
 Title: Interactive HTML graphics
-Version: 1.99.1
+Version: 1.99.2
 Authors@R: 
     c(
         person(
