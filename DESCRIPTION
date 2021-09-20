@@ -1,7 +1,7 @@
 Package: Glimma
 Type: Package
 Title: Interactive HTML graphics
-Version: 2.3.0
+Version: 2.3.1
 Authors@R: 
     c(
         person(
@@ -64,7 +64,11 @@ Suggests:
     BiocStyle,
     IRanges,
     GenomicRanges,
-    pryr
+    pryr,
+    AnnotationHub,
+    scRNAseq,
+    scater,
+    scran
 License: GPL-3
 URL: https://github.com/hasaru-k/GlimmaV2
 BugReports: https://github.com/hasaru-k/GlimmaV2/issues

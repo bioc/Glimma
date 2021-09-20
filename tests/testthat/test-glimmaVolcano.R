@@ -57,3 +57,36 @@ test_that("Saving volcano plot works",
     expect_equal(file.exists(testname), TRUE)
     unlink(testname)
 })
+
+test_that("Length of status vector must match the other args",
+{
+    rand <- 25000
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        expect_error(glimmaVolcano(x, dge=dge, status=rep(0, rand)))
+        expect_silent(glimmaVolcano(x, dge=dge, status=rep(0, nrow(x))))
+    }
+    # DESeqDataset
+    expect_error(glimmaVolcano(dds, status=rep(0, rand)))
+    expect_silent(glimmaVolcano(dds, status=rep(0, nrow(dds))))
+})
+
+test_that("DGE argument must have same length as limma/edgeR objects",
+{
+    sample <- 1:(nrow(dge)-10)
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        expect_error(glimmaVolcano(x, dge=dge[sample,]))
+    }
+})
+
+test_that("Providing counts warns the user of log transformation",
+{
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        expect_message(glimmaVolcano(x, counts=dge$counts, groups=dge$samples$group))
+    }
+})

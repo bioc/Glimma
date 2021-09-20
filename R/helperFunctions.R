@@ -1,3 +1,5 @@
+fn_author_line <- "@author Hasaru Kariyawasam, Shian Su and Oliver Voogd"
+
 MA_details <- function()
 {
   c(
@@ -15,7 +17,8 @@ MA_details <- function()
     Briefly, other interactive features include a search box for the table, buttons to save plots and data
     (summary statistics and expression values), additional pop-up information when hovering on points in plots,
     and rescaling of the y-axis in the expression plot.",
-    "@return htmlwidget object or \\code{NULL} if \\code{html} argument is specified."
+    "@return htmlwidget object or \\code{NULL} if \\code{html} argument is specified.",
+    fn_author_line
   )
 }
 
@@ -32,7 +35,8 @@ XY_details <- function()
     Briefly, other interactive features include a search box for the table, buttons to save plots and data
     (summary statistics and expression values), additional pop-up information when hovering on points in plots,
     and rescaling of the y-axis in the expression plot.",
-    "@return htmlwidget object or \\code{NULL} if \\code{html} argument is specified."
+    "@return htmlwidget object or \\code{NULL} if \\code{html} argument is specified.",
+    fn_author_line
   )
 }
 
@@ -49,7 +53,8 @@ volcano_details <- function()
     Briefly, other interactive features include a search box for the table, buttons to save plots and data
     (summary statistics and expression values), additional pop-up information when hovering on points in plots,
     and rescaling of the y-axis in the expression plot.",
-    "@return htmlwidget object or \\code{NULL} if \\code{html} argument is specified."
+    "@return htmlwidget object or \\code{NULL} if \\code{html} argument is specified.",
+    fn_author_line
   )
 }
 
@@ -66,8 +71,9 @@ MDS_details <- function()
      (with the default of \\code{continous.colour=FALSE}), then sample points will have no scaling options, but can only be adjusted
      in colour and shape by \\code{groups} and \\code{labels}. Instead, if \\code{groups} is a numeric vector (e.g. library size or
      expression level of a specific gene), then the plot can be scaled and coloured by the numeric values with
-     \\code{continous.colour=TRUE}.",
-    "@return htmlwidget object or \\code{NULL} if \\code{html} argument is specified."
+     \\code{continous.colour=TRUE}. For more details, refer to \\code{limma::plotMDS} .",
+    "@return htmlwidget object or \\code{NULL} if \\code{html} argument is specified.",
+    fn_author_line    
   )
 }
 

@@ -21,6 +21,8 @@ library(DESeq2)
 
 ## Introduction
 
+<<Shian, can you include any relevant suggestions I made to the limma/edgeR version of the vignette here please? - comment by Charity>>
+
 In this vignette we present the basic features of Glimma. 
 Glimma is an interactive R widget for creating plots for differential expression analysis, created using the Vega and htmlwidgets frameworks. The created plots can be embedded in R Markdown, or exported as standalone HTML documents.
 The data presented here is slightly modified from the [RNAseq123](https://bioconductor.org/packages/release/workflows/html/RNAseq123.html) workflow with only a single contrast has been performed for simplicity. Here we use DESeq2 to fit the model.
@@ -68,13 +70,25 @@ In the plot above, try:
 + Changing the dimensions plotted on the x-axis (x_axis) to dim2 and y-axis (y_axis) to dim3.
 + Saving the plots in either PNG or SVG formats using the "Save Plot" button.
 
-### Modifications to the pot
-Some helpful customisations to the plot include:
+### Modifications to the plot
 
-+ `glimmaMDS(dds, width=1200, height=1200)`, which will adjust the dimensions in pixels of the created widget - default width and height is 920px.
-+ `glimmaMDS(dds, continuous.color=TRUE)`, which specifies that continuous colour schemes should be used - useful for when a large number of differential selections are required.
-+ `glimmaMDS(dds, groups=[vector or data frame])`, which allows changing the associated sample information such as experimental groups - this information is displayed in mouseover tooltips and can be used to adjust the plot using `scale_by`, `colour_by` and `shape_by`.
+***Adjusting plot size***
 
+*Usage:* `glimmaMDS(dds, width=1200, height=1200)`
+
+Users can specify the width and height of the MDS plot widget in pixels. The default width and height are 900 and 500 respectively.
+
+***Continuous colour schemes***
+
+*Usage:* `glimmaMDS(dds, continuous.color=TRUE)`
+
+This argument specifies that continuous colour schemes should be used, which can be useful for colouring samples by their expression for a particular gene.
+
+***Custom experimental groups***
+
+*Usage:* `glimmaMDS(dds, groups=[vector or data frame])`
+
+This allows the user to change the associated sample information such as experimental groups. This information is displayed in mouseover tooltips and can be used to adjust the plot using `scale_by`, `colour_by` and `shape_by` fields.
 
 ## MA Plot
 
@@ -93,12 +107,12 @@ To create the MA plot we first need to run differential expression (DE) analysis
 dds <- DESeq(dds, quiet=TRUE)
 ```
 
-The MA plot can then be created using the `dds` object that now contains fitted results.
+The MA plot can then be created using the `dds` object that now contains fitted results and the gene counts.
 
 ```{r}
 glimmaMA(dds)
 ```
-
+<<Can you check the code? I stumbled on gene 244895 (Peak1) and the limma/edgeR version of the plot has the gene downregulated (blue and status=-1) but the deseq2 version of the plot has the same gene upregulated (red and status=1). The expression plots look the same in both plots though. Has there been a switch in directionality (if so make it consistent), or is deseq2 doing something totally different to limma/edgeR in terms of DE analysis (if so keep as is)? - comment by Charity>>
 
 ### Interactions with the plot
 In the plot above, try:
@@ -114,18 +128,49 @@ In the plot above, try:
 + Saving the summary plot or expression plot in either PNG or SVG formats, using the "Save Data" dropdown.
 
 ### Modifications to the plot
-Some customisations to the plot include:
 
-+ `glimmaMA(dds, width=1200, height=1200)`, which will adjust the dimensions in pixels of the created widget
-    + Default width and height is 920px.
-+ `glimmaMA(dds, continuous.color=TRUE)`, which specifies that continuous colour schemes should be used
-    + Useful for when a large number of differential selections are required.
-+ `glimmaMA(dds, groups=[vector or data frame])`, which allows changing the associated sample information such as experimental groups
-    + This information is displayed in mouseover tooltips and can be used to adjust the plot using scale_by, colour_by and shape_by.
-+ `glimmaMA(dds, status.cols=c("powderblue", "seashell", "salmon")`, which customises the colours associated with the status of each gene
-    + These need to be valid CSS colour strings.
-+ `glimmaMA(dds, sample.cols=colours)`, which colours each sample based on the character vector of valid CSS colour strings `colours`
-    + This vector needs to be of length `ncol(dge$counts)` or `ncol(counts)` if specified.
+***Adjusting plot size***
+
+*Usage:* `glimmaMA(dds, width=1200, height=1200)`
+
+Users can specify the width and height of the MA plot widget in pixels. The default width and height are both 920px.
+
+***Changing DE status colouring***
+
+*Usage:* `glimmaMA(dds, status.cols=c("blue", "grey", "red")`
+
+Users can customise the colours associated with the differential expression status of a gene using the `status.cols` argument. A vector of length three should be passed in, where each element must be a valid CSS colour string. 
+
+***Changing sample colours in expression plot***
+
+*Usage:* `glimmaMA(dds, sample.cols=colours)`
+
+
+The `sample.cols` argument colours each sample based on the character vector of 
+valid CSS colour strings `colours`. The `colours` vector must be of length
+`ncol(counts)`.
+
+***Overriding counts and groups***
+
+*Usage:* `glimmaMA(dds, counts=counts, groups=groups)`
+
+Glimma extracts counts from `DESeq2::counts(dds)` by default, and experimental groups
+from a `group` column in `colData(dds)` if it is available.
+However, users can optionally supply their own counts matrix and 
+groups vector using the `counts` and `groups` arguments.
+
+***Transforming counts values***
+
+*Usage:* `glimmaMA(dds, transform.counts="rpkm")`
+
+The `transform.counts` argument allows users to choose between strategies for
+transforming counts data displayed on the expression plot. 
+The default argument is `"logcpm"` which log-transforms counts using
+`edgeR::cpm(counts, log=TRUE)`. Other options are "`rpkm"` for
+`edgeR::rpkm(counts)`, `cpm` for `edgeR::cpm(counts)` and `none` for no
+transformation.
+
++ <<add a comment on `anno` and `display.columns`>>
 
 ## Saving widgets
 

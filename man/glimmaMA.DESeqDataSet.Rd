@@ -11,9 +11,9 @@
   status = NULL,
   anno = NULL,
   display.columns = NULL,
-  status.cols = c("dodgerblue", "silver", "firebrick"),
+  status.cols = c("#1052bd", "silver", "#cc212f"),
   sample.cols = NULL,
-  transform.counts = c("logcpm", "cpm", "rpkm", "none"),
+  transform.counts = c("logcpm", "cpm", "rpkm", "logrpkm", "none"),
   main = "MA Plot",
   xlab = "logCPM",
   ylab = "logFC",
@@ -44,8 +44,8 @@ with \code{status}  in the order of -1, 0 and 1.}
 for colours associated with each sample to be displayed on the expression plot. If left
 unspecified, samples will be coloured according to \code{groups}.}
 
-\item{transform.counts}{the type of transform used on the counts log-cpm by default.
-\code{edgeR::cpm(counts, log=TRUE)}; defaults to FALSE.}
+\item{transform.counts}{the type of transformation used on the counts - "logcpm" for using \code{edgeR::cpm(counts, log=TRUE)};
+"cpm" for \code{edgeR::cpm(counts)}; "rpkm" for \code{edgeR::rpkm(counts)}; "logrpkm" for \code{edgeR::rpkm(counts, log=TRUE)}; and "none" for no transformation). Defaults to "logcpm".}
 
 \item{main}{character string for the main title of summary plot.}
 
@@ -60,7 +60,7 @@ should be included in the file name e.g. "file.html".}
 
 \item{height}{numeric value indicating width of height in pixels.}
 
-\item{...}{addition unused arguments.}
+\item{...}{additional unused arguments.}
 }
 \value{
 htmlwidget object or \code{NULL} if \code{html} argument is specified.
@@ -101,4 +101,7 @@ glimmaMA(dds)
 }
 \seealso{
 \code{\link{glimmaMA}}, \code{\link{glimmaMA.MArrayLM}}, \code{\link{glimmaMA.DGEExact}}, \code{\link{glimmaMA.DGELRT}}
+}
+\author{
+Hasaru Kariyawasam, Shian Su and Oliver Voogd
 }

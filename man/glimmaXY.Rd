@@ -9,12 +9,13 @@ glimmaXY(
   y,
   xlab = "x",
   ylab = "y",
-  counts = NULL,
-  groups = NULL,
+  dge = NULL,
+  counts = dge$counts,
+  groups = dge$samples$group,
   status = rep(0, length(x)),
   anno = NULL,
   display.columns = NULL,
-  status.cols = c("dodgerblue", "silver", "firebrick"),
+  status.cols = c("#1052bd", "silver", "#cc212f"),
   sample.cols = NULL,
   transform.counts = c("logcpm", "cpm", "rpkm", "none"),
   main = "XY Plot",
@@ -31,6 +32,10 @@ glimmaXY(
 \item{xlab}{character string for the x-axis label of summary plot.}
 
 \item{ylab}{character string for the y-axis label of summary plot.}
+
+\item{dge}{\code{DGEList} object with \code{length(x)} rows from which expression values are
+extracted from to create expression (right) plot. Gene counts are taken from \code{dge$counts}
+and sample groups from \code{dge$samples$group}.}
 
 \item{counts}{numeric matrix with \code{length(x)} rows containing gene expression values. This can be used to replace
 raw gene counts from dge$counts with transformed counts e.g. logCPM or logRPKM values.}
@@ -53,8 +58,8 @@ with \code{status}  in the order of -1, 0 and 1.}
 for colours associated with each sample to be displayed on the expression plot. If left
 unspecified, samples will be coloured according to \code{groups}.}
 
-\item{transform.counts}{the type of transform used on the counts log-cpm by default.
-\code{edgeR::cpm(counts, log=TRUE)}; defaults to FALSE.}
+\item{transform.counts}{the type of transformation used on the counts - "logcpm" for using \code{edgeR::cpm(counts, log=TRUE)};
+"cpm" for \code{edgeR::cpm(counts)}; "rpkm" for \code{edgeR::rpkm(counts)}; "logrpkm" for \code{edgeR::rpkm(counts, log=TRUE)}; and "none" for no transformation). Defaults to "logcpm".}
 
 \item{main}{character string for the main title of summary plot.}
 
@@ -97,4 +102,7 @@ efit <- limma::eBayes(vfit)
 
 glimmaXY(efit$Amean, efit$coefficients)
 
+}
+\author{
+Hasaru Kariyawasam, Shian Su and Oliver Voogd
 }

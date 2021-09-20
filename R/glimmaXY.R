@@ -5,6 +5,9 @@
 #' @inheritParams glimmaMA.MArrayLM
 #' @param x numeric vector of values to plot on the x-axis of the summary plot.
 #' @param y numeric vector of values to plot on the y-axis of the summary plot.
+#' @param dge \code{DGEList} object with \code{length(x)} rows from which expression values are
+#' extracted from to create expression (right) plot. Gene counts are taken from \code{dge$counts}
+#' and sample groups from \code{dge$samples$group}.
 #' @param status vector of length \code{length(x)} indicating the status of each gene.
 #' A value of -1 marks a down-regulated gene, 0 marks a gene with no expression difference, and
 #' 1 marks an up-regulated gene.
@@ -35,12 +38,13 @@ glimmaXY <- function(
   y,
   xlab="x",
   ylab="y",
-  counts=NULL,
-  groups=NULL,
+  dge=NULL,
+  counts=dge$counts,
+  groups=dge$samples$group,
   status=rep(0, length(x)),
   anno=NULL,
   display.columns = NULL,
-  status.cols=c("dodgerblue", "silver", "firebrick"),
+  status.cols=c("#1052bd", "silver", "#cc212f"),
   sample.cols=NULL,
   transform.counts = c("logcpm", "cpm", "rpkm", "none"),
   main="XY Plot",
@@ -48,6 +52,12 @@ glimmaXY <- function(
   width = 920,
   height = 920)
 {
+
+  # check if user counts are given
+  if (is.null(dge) && !is.null(counts)) {
+    message("External counts supplied using counts argument will be transformed to log-cpm by default. Specify transform.counts='none' to override transformation.")
+  }
+
   transform.counts <- match.arg(transform.counts)
   if (length(x)!=length(y)) stop("Error: x and y args must have the same length.")
   table <- data.frame(signif(x, digits=4), signif(y, digits=4))
@@ -100,7 +110,7 @@ buildXYData <- function(
   } else {
     # df format for serialisation
     if (transform.counts != "none") {
-      if (!all.equal(counts, round(counts))) {
+      if (!isTRUE(all.equal(counts, round(counts)))) {
         warning("count transform requested but not all count values are integers.")
       }
 
@@ -108,7 +118,7 @@ buildXYData <- function(
         counts <- edgeR::cpm(counts, log=TRUE)
       } else if (transform.counts == "cpm") {
         counts <- edgeR::cpm(counts, log=FALSE)
-      } else if (transform.counts == "rpkm") {
+      } else if (transform.counts == "rpkm" || transform.counts == "logrpkm") {
         if (is.null(anno$length)) {
           stop("no 'length' column in gene annotation, rpkm cannot be computed")
         }
@@ -116,7 +126,12 @@ buildXYData <- function(
         if (!is.numeric(anno$length)) {
           stop("'length' column of gene annotation must be numeric values")
         }
-        counts <- edgeR::rpkm(counts, gene.length = anno$length)
+
+        if (transform.counts == "rpkm") {
+          counts <- edgeR::rpkm(counts, gene.length = anno$length)
+        } else {
+          counts <- edgeR::rpkm(counts, gene.length = anno$length, log = TRUE)
+        }
       }
     }
 
@@ -139,7 +154,6 @@ buildXYData <- function(
   table <- cbind(table, status=as.vector(status))
   if (!is.null(anno))
   {
-    colnames(anno) <- gsub("symbol", "symbol", colnames(anno), ignore.case=TRUE)
     table <- cbind(table, anno)
   }
 
@@ -165,6 +179,7 @@ buildXYData <- function(
                           groups=groups,
                           levels=level,
                           expCols=colnames(groups),
+                          annoCols= if (is.null(anno)) {-1} else {colnames(anno)},
                           statusColours=status.cols,
                           sampleColours= if (is.null(sample.cols)) {-1} else {sample.cols},
                           samples=colnames(counts),

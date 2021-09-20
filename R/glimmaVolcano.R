@@ -53,7 +53,7 @@ glimmaVolcano.MArrayLM <- function(
   status=limma::decideTests(x),
   anno=x$genes,
   display.columns = NULL,
-  status.cols=c("dodgerblue", "silver", "firebrick"),
+  status.cols=c("#1052bd", "silver", "#cc212f"),
   sample.cols=NULL,
   p.adj.method = "BH",
   transform.counts = c("logcpm", "cpm", "rpkm", "none"),
@@ -65,6 +65,14 @@ glimmaVolcano.MArrayLM <- function(
   height = 920,
   ...)
 {
+
+  # check if user counts are given
+  if (is.null(dge) && !is.null(counts)) {
+    message("External counts supplied using counts argument will be transformed to log-cpm by default. Specify transform.counts='none' to override transformation.")
+  }
+
+  if (!is.null(dge) && nrow(x) != nrow(dge)) stop("MArrayLM object must have equal rows/genes to DGEList.")
+
   transform.counts <- match.arg(transform.counts)
   table <- data.frame(signif(unname(x$coefficients[, coef]), digits=4),
                       signif( -log10(x$p.value[, coef]), digits=4))
@@ -112,7 +120,7 @@ glimmaVolcano.DGEExact <- function(
   status=edgeR::decideTestsDGE(x),
   anno=x$genes,
   display.columns = NULL,
-  status.cols=c("dodgerblue", "silver", "firebrick"),
+  status.cols=c("#1052bd", "silver", "#cc212f"),
   sample.cols=NULL,
   p.adj.method = "BH",
   transform.counts = c("logcpm", "cpm", "rpkm", "none"),
@@ -124,6 +132,14 @@ glimmaVolcano.DGEExact <- function(
   height = 920,
   ...)
 {
+
+  # check if user counts are given
+  if (is.null(dge) && !is.null(counts)) {
+    message("External counts supplied using counts argument will be transformed to log-cpm by default. Specify transform.counts='none' to override transformation.")
+  }
+
+  if (!is.null(dge) && nrow(x) != nrow(dge)) stop("DGEExact/DGELRT object must have equal rows/genes to DGEList.")
+
   transform.counts <- match.arg(transform.counts)
   # create initial table with -log10(pvalue) and logFC features
   table <- data.frame(signif(x$table$logFC, digits=4),
@@ -184,7 +200,7 @@ glimmaVolcano.DESeqDataSet  <- function(
   status=NULL,
   anno=NULL,
   display.columns = NULL,
-  status.cols=c("dodgerblue", "silver", "firebrick"),
+  status.cols=c("#1052bd", "silver", "#cc212f"),
   sample.cols=NULL,
   transform.counts = c("logcpm", "cpm", "rpkm", "none"),
   main="Volcano Plot",

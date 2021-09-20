@@ -15,7 +15,7 @@ glimmaMDS(x, ...)
 htmlwidget object or \code{NULL} if \code{html} argument is specified.
 }
 \description{
-Generic function for drawing a two-panel interactive MDS plot.
+Generic function for drawing a two-panel interactive multidimensional scaling (MDS) plot.
 The function invokes the following methods which depend on the class of the first argument:
 \itemize{
   \item \code{\link{glimmaMDS.DGEList}} for edgeR analysis
@@ -32,7 +32,7 @@ The left plot shows two MDS dimensions, with sample annotations displayed on hov
      (with the default of \code{continous.colour=FALSE}), then sample points will have no scaling options, but can only be adjusted
      in colour and shape by \code{groups} and \code{labels}. Instead, if \code{groups} is a numeric vector (e.g. library size or
      expression level of a specific gene), then the plot can be scaled and coloured by the numeric values with
-     \code{continous.colour=TRUE}.
+     \code{continous.colour=TRUE}. For more details, refer to \code{limma::plotMDS} .
 }
 \examples{
 
@@ -53,4 +53,7 @@ expr <- edgeR::cpm(dge, log = TRUE)
 glimmaMDS(expr)
 
 
+}
+\author{
+Hasaru Kariyawasam, Shian Su and Oliver Voogd
 }

@@ -40,7 +40,7 @@ test_that("MA Plot returns widget",
     expect_equal(is.null(result), FALSE)
 })
 
-test_that("Saving MA plot works",
+test_that("HTML arg exports the MA plot",
 {
     testname <- "testMAabc.html"
     # MArrayLM, DGEExact/DGELRT
@@ -83,11 +83,119 @@ test_that("Length of status vector must match the other args",
     expect_message(glimmaMA(dds, status=rep(0, nrow(dds))), "genes were filtered out in DESeq2 tests")
 })
 
-test_that("User cannot provide counts argument without groups argument for edgeR/limma objects",
+test_that("DGE argument must have same length as limma/edgeR objects",
+{
+    sample <- 1:(nrow(dge)-10)
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        expect_error(glimmaMA(x, dge=dge[sample,]))
+    }
+})
+
+test_that("Providing counts warns the user of log transformation",
 {
     # MArrayLM, DGEExact/DGELRT
     for (x in list(limmaFit, dgeexact))
     {
-        expect_error(glimmaMA(x, counts=dge$counts))
+        expect_message(glimmaMA(x, counts=dge$counts, groups=dge$samples$group))
     }
+})
+
+test_that("NULL sample.colours arg leads to -1 transmitted to JS frontend",
+{
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        xData <- glimmaMA(x, dge=dge)$x$data
+        expect_equal(xData$sampleColours, -1)
+    }
+    xData <- glimmaMA(dds)$x$data
+    expect_equal(xData$sampleColours, -1)
+})
+
+test_that("Vector sample.colours arg leads to vector transmitted to JS frontend",
+{
+    testcols <- rep("red", ncol(dge))
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        xData <- glimmaMA(x, dge=dge, sample.cols=testcols)$x$data
+        expect_equal(xData$sampleColours, testcols)
+    }
+    xData <- glimmaMA(dds, sample.cols=testcols)$x$data
+    expect_equal(xData$sampleColours, testcols)
+})
+
+test_that("Setting transform.counts = cpm transforms accordingly",
+{
+    expected_counts <- edgeR::cpm(dge$counts, log=FALSE)
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        xData <- glimmaMA(x, dge=dge, transform.counts="cpm")$x$data
+        expect_true(all(xData$counts==expected_counts))
+    }
+    # can't test DESeq2 because some genes are filtered out
+})
+
+test_that("Specifying RPKM transformation without length column gives error",
+{
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        expect_error(glimmaMA(x, dge=dge, transform.counts="rpkm"))
+    }
+    expect_error(glimmaMA(dds, transform.counts="rpkm"))
+})
+
+
+test_that("Specifying RPKM transformation with non-numeric length gives an error",
+{
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        x$genes$length <- "123abc"
+        expect_error(glimmaMA(x, dge=dge, transform.counts="rpkm"))
+        x$genes$length <- NULL
+    }
+})
+
+test_that("Setting transform.counts = rpkm transforms accordingly",
+{
+    expected_counts <- edgeR::rpkm(dge$counts, gene.length=1234)
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        x$genes$length <- 1234
+        xData <- glimmaMA(x, dge=dge, transform.counts="rpkm")$x$data
+        expect_true(all(xData$counts==expected_counts))
+    }
+    # can't test DESeq2 because some genes are filtered out
+})
+
+test_that("Setting transform.counts = logrpkm transforms accordingly",
+{
+    expected_counts <- edgeR::rpkm(dge$counts, gene.length=1234, log = TRUE)
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        x$genes$length <- 1234
+        xData <- glimmaMA(x, dge=dge, transform.counts="logrpkm")$x$data
+        expect_true(all(xData$counts==expected_counts))
+    }
+    # can't test DESeq2 because some genes are filtered out
+})
+
+test_that("Display.columns arg provides a minimal set of [xlab, ylab, geneID]",
+{
+    # MArrayLM, DGEExact/DGELRT
+    for (x in list(limmaFit, dgeexact))
+    {
+        xData <- glimmaMA(x, dge=dge, xlab="x", ylab="y", display.columns=c("SYMBOL"))$x$data
+        expect_true(setequal(xData$cols, c("x", "y", "gene", "SYMBOL")))
+    }
+    # can't test DESeq2 because some genes are filtered out
+    xData <- glimmaMA(dds, xlab="x", ylab="y", display.columns=c("SYMBOL"))$x$data
+    expect_true(setequal(xData$cols, c("x", "y", "gene", "SYMBOL")))
 })

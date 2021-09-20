@@ -13,10 +13,10 @@
   status = limma::decideTests(x),
   anno = x$genes,
   display.columns = NULL,
-  status.cols = c("dodgerblue", "silver", "firebrick"),
+  status.cols = c("#1052bd", "silver", "#cc212f"),
   sample.cols = NULL,
   p.adj.method = "BH",
-  transform.counts = c("logcpm", "cpm", "rpkm", "none"),
+  transform.counts = c("logcpm", "cpm", "rpkm", "logrpkm", "none"),
   main = colnames(x)[coef],
   xlab = "logCPM",
   ylab = "logFC",
@@ -32,11 +32,12 @@ summary (left) plot.}
 
 \item{dge}{\code{DGEList} object with \code{nrow(x)} rows from which expression values are
 extracted from to create expression (right) plot. Gene counts are taken from \code{dge$counts}
-and sample groups from \code{dge$samples$group}.}
+and sample groups from \code{dge$samples$group}. By default raw counts are transformed to
+log-cpm values (see more in the \code{transform.counts} argument).}
 
 \item{counts}{numeric matrix with \code{nrow(x)} rows containing gene expression values.
-This can be used to replace raw gene counts from \code{dge$counts} with transformed counts
-e.g. logCPM or logRPKM values.}
+This can be used to replace the gene counts from \code{dge$counts}, i.e. you may have
+log-rpkm values stored in a different object that you wish to use.}
 
 \item{groups}{vector of length \code{ncol(dge)} representing categorisation of samples in
 expression plot.}
@@ -63,8 +64,8 @@ unspecified, samples will be coloured according to \code{groups}.}
 
 \item{p.adj.method}{character string specifying p-value adjustment method.}
 
-\item{transform.counts}{the type of transform used on the counts log-cpm by default.
-\code{edgeR::cpm(counts, log=TRUE)}; defaults to FALSE.}
+\item{transform.counts}{the type of transformation used on the counts - "logcpm" for using \code{edgeR::cpm(counts, log=TRUE)};
+"cpm" for \code{edgeR::cpm(counts)}; "rpkm" for \code{edgeR::rpkm(counts)}; "logrpkm" for \code{edgeR::rpkm(counts, log=TRUE)}; and "none" for no transformation). Defaults to "logcpm".}
 
 \item{main}{character string for the main title of summary plot.}
 
@@ -79,7 +80,7 @@ should be included in the file name e.g. "file.html".}
 
 \item{height}{numeric value indicating width of height in pixels.}
 
-\item{...}{addition unused arguments.}
+\item{...}{additional unused arguments.}
 }
 \value{
 htmlwidget object or \code{NULL} if \code{html} argument is specified.
@@ -120,4 +121,7 @@ glimmaMA(efit, dge = dge)
 }
 \seealso{
 \code{\link{glimmaMA}}, \code{\link{glimmaMA.DGEExact}}, \code{\link{glimmaMA.DGELRT}}, \code{\link{glimmaMA.DESeqDataSet}}
+}
+\author{
+Hasaru Kariyawasam, Shian Su and Oliver Voogd
 }

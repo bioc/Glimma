@@ -10,6 +10,8 @@
 #'   \item \code{\link{glimmaMA.DGEExact}} for edgeR analysis, produced from \code{\link{exactTest}}
 #'   \item \code{\link{glimmaMA.DGELRT}} for edgeR analysis, produced from \code{\link{glmLRT}}
 #'   \item \code{\link{glimmaMA.DESeqDataSet}} for DESeq2 analysis }
+
+#' glimmaMD is an alias for glimmaMA.
 #'
 #' @param x the DE object to plot.
 #' @param ... additional arguments affecting the plots produced. See specific methods for detailed arguments.
@@ -25,6 +27,11 @@ glimmaMA <- function(x, ...)
   UseMethod("glimmaMA")
 }
 
+#' @rdname glimmaMA
+#' @export
+glimmaMD <- function(x, ...) {
+  glimmaMA(x, ...)
+}
 
 #' Glimma MA Plot
 #'
@@ -36,11 +43,12 @@ glimmaMA <- function(x, ...)
 #'
 #' @param dge \code{DGEList} object with \code{nrow(x)} rows from which expression values are
 #' extracted from to create expression (right) plot. Gene counts are taken from \code{dge$counts}
-#' and sample groups from \code{dge$samples$group}.
+#' and sample groups from \code{dge$samples$group}. By default raw counts are transformed to
+#' log-cpm values (see more in the \code{transform.counts} argument).
 #'
 #' @param counts numeric matrix with \code{nrow(x)} rows containing gene expression values.
-#' This can be used to replace raw gene counts from \code{dge$counts} with transformed counts
-#' e.g. logCPM or logRPKM values.
+#' This can be used to replace the gene counts from \code{dge$counts}, i.e. you may have
+#' log-rpkm values stored in a different object that you wish to use.
 #'
 #' @param groups vector of length \code{ncol(dge)} representing categorisation of samples in
 #' expression plot.
@@ -66,8 +74,8 @@ glimmaMA <- function(x, ...)
 #' unspecified, samples will be coloured according to \code{groups}.
 #'
 #' @param p.adj.method character string specifying p-value adjustment method.
-#' @param transform.counts the type of transform used on the counts log-cpm by default.
-#' \code{edgeR::cpm(counts, log=TRUE)}; defaults to FALSE.
+#' @param transform.counts the type of transformation used on the counts - "logcpm" for using \code{edgeR::cpm(counts, log=TRUE)};
+#' "cpm" for \code{edgeR::cpm(counts)}; "rpkm" for \code{edgeR::rpkm(counts)}; "logrpkm" for \code{edgeR::rpkm(counts, log=TRUE)}; and "none" for no transformation). Defaults to "logcpm".
 #'
 #' @param main character string for the main title of summary plot.
 #' @param xlab character string for the x-axis label of summary plot.
@@ -76,7 +84,7 @@ glimmaMA <- function(x, ...)
 #' should be included in the file name e.g. "file.html".
 #' @param width numeric value indicating width of widget in pixels.
 #' @param height numeric value indicating width of height in pixels.
-#' @param ... addition unused arguments.
+#' @param ... additional unused arguments.
 #' @seealso \code{\link{glimmaMA}}, \code{\link{glimmaMA.DGEExact}}, \code{\link{glimmaMA.DGELRT}}, \code{\link{glimmaMA.DESeqDataSet}}
 #' @eval MA_details()
 #'
@@ -105,10 +113,10 @@ glimmaMA.MArrayLM <- function(
   status=limma::decideTests(x),
   anno=x$genes,
   display.columns = NULL,
-  status.cols=c("dodgerblue", "silver", "firebrick"),
+  status.cols=c("#1052bd", "silver", "#cc212f"),
   sample.cols=NULL,
   p.adj.method = "BH",
-  transform.counts = c("logcpm", "cpm", "rpkm", "none"),
+  transform.counts = c("logcpm", "cpm", "rpkm", "logrpkm", "none"),
   main=colnames(x)[coef],
   xlab="logCPM",
   ylab="logFC",
@@ -117,9 +125,15 @@ glimmaMA.MArrayLM <- function(
   height = 920,
   ...)
 {
+
+  # check if user counts are given
+  if (is.null(dge) && !is.null(counts)) {
+    message("External counts supplied using counts argument will be transformed to log-cpm by default. Specify transform.counts='none' to override transformation.")
+  }
+
   transform.counts <- match.arg(transform.counts)
   # check if the number of rows of x and the dge object are equal
-  if (nrow(x) != nrow(dge)) stop("Summary object must have equal rows/genes to expression object.")
+  if (!is.null(dge) && nrow(x) != nrow(dge)) stop("MArrayLM object must have equal rows/genes to DGEList.")
 
   # create initial table with logCPM and logFC features
   table <- data.frame(signif(unname(x$Amean), digits=4),
@@ -173,10 +187,10 @@ glimmaMA.DGEExact <- function(
   status=edgeR::decideTestsDGE(x),
   anno=x$genes,
   display.columns = NULL,
-  status.cols=c("dodgerblue", "silver", "firebrick"),
+  status.cols=c("#1052bd", "silver", "#cc212f"),
   sample.cols=NULL,
   p.adj.method = "BH",
-  transform.counts = c("logcpm", "cpm", "rpkm", "none"),
+  transform.counts = c("logcpm", "cpm", "rpkm", "logrpkm", "none"),
   main=paste(x$comparison[2],"vs",x$comparison[1]),
   xlab="logCPM",
   ylab="logFC",
@@ -185,9 +199,15 @@ glimmaMA.DGEExact <- function(
   height = 920,
   ...)
 {
+
+  # check if user counts are given
+  if (is.null(dge) && !is.null(counts)) {
+    message("External counts supplied using counts argument will be transformed to log-cpm by default. Specify transform.counts='none' to override transformation.")
+  }
+
   transform.counts <- match.arg(transform.counts)
   # check if the number of rows of x and the dge object are equal
-  if (nrow(x) != nrow(dge)) stop("Summary object must have equal rows/genes to expression object.")
+  if (!is.null(dge) && nrow(x) != nrow(dge)) stop("DGEExact/DGELRT object must have equal rows/genes to DGEList.")
 
   table <- data.frame(signif(x$table$logCPM, digits=4),
                       signif(x$table$logFC, digits=4))
@@ -252,9 +272,9 @@ glimmaMA.DESeqDataSet  <- function(
   status=NULL,
   anno=NULL,
   display.columns = NULL,
-  status.cols=c("dodgerblue", "silver", "firebrick"),
+  status.cols=c("#1052bd", "silver", "#cc212f"),
   sample.cols=NULL,
-  transform.counts = c("logcpm", "cpm", "rpkm", "none"),
+  transform.counts = c("logcpm", "cpm", "rpkm", "logrpkm", "none"),
   main="MA Plot",
   xlab="logCPM",
   ylab="logFC",
@@ -265,7 +285,6 @@ glimmaMA.DESeqDataSet  <- function(
 {
   transform.counts <- match.arg(transform.counts)
   res.df <- as.data.frame(DESeq2::results(x))
-
   # filter out genes that have missing data
   complete_genes <- complete.cases(res.df)
   res.df <- res.df[complete_genes, ]

@@ -1,6 +1,6 @@
 #' Glimma MDS Plot
 #'
-#' Generic function for drawing a two-panel interactive MDS plot.
+#' Generic function for drawing a two-panel interactive multidimensional scaling (MDS) plot.
 #' The function invokes the following methods which depend on the class of the first argument:
 #' \itemize{
 #'   \item \code{\link{glimmaMDS.DGEList}} for edgeR analysis
@@ -225,7 +225,7 @@ glimmaMDS.default <- function(
 #' @inheritParams glimmaMDS.default
 #' @param x \code{DGEList} object containing gene counts in \code{x$counts}.
 #' @param prior.count integer indicating the average count to be added to each observation to avoid taking log of zero when
-#' raw counts are transformed to log-counts-per-million values.
+#' raw counts are transformed to log-counts-per-million values (using \code{edgeR::cpm} function).
 #'
 #' @eval MDS_details()
 #'
@@ -256,10 +256,8 @@ glimmaMDS.DGEList <- function(
     stop("number of rows in groups argument must equal the number of columns in the DGE object")
   }
 
-  if (is.null(labels))
-  {
-    labels <- as.character(seq_len(ncol(x)))
-  }
+  if (is.null(labels)) labels <- as.character(seq_len(ncol(x)))
+  
   transformed_counts <- edgeR::cpm(x, log=TRUE, prior.count = prior.count)
   # call main processing function
   return(glimmaMDS.default(
@@ -312,14 +310,11 @@ glimmaMDS.DESeqDataSet <- function(
   height = 500,
   ...)
 {
-  if (is.null(labels))
-  {
-    labels <- as.character(seq_len(ncol(x)))
-  }
-  if (is.null(groups))
-  {
-    groups <- as.character(rep(1, ncol(x)))
-  }
+  
+  if (is.null(labels)) labels <- as.character(seq_len(ncol(x)))
+
+  if (is.null(groups)) groups <- as.character(rep(1, ncol(x)))
+
   transformed_counts <- edgeR::cpm(
       DESeq2::counts(x),
       log = TRUE,
