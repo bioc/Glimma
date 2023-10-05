@@ -141,7 +141,13 @@ glimmaMA.MArrayLM <- function(
   names(table) <- c(xlab, ylab)
   AdjPValue <- signif(stats::p.adjust(x$p.value[, coef], method=p.adj.method), digits=4)
   table <- cbind(table, PValue=signif(x$p.value[, coef], digits=4), AdjPValue=AdjPValue)
-  table <- cbind(gene=rownames(x), table)
+  if (!any(colnames(anno) == "gene")) {
+    table <- cbind(gene=rownames(x), table)
+  } else {
+    table <- cbind(gene=anno$gene, table)
+    table$gene[is.na(table$gene)] <- "N/A"
+    anno$gene <- NULL
+  }
   if (is.matrix(status)) status <- status[, coef]
   xData <- buildXYData(table, status, main, display.columns, anno, counts, xlab, ylab, status.cols, sample.cols, groups, transform.counts)
   return(glimmaXYWidget(xData, width, height, html))
@@ -215,7 +221,13 @@ glimmaMA.DGEExact <- function(
   names(table) <- c(xlab, ylab)
   AdjPValue <- signif(stats::p.adjust(x$table$PValue, method=p.adj.method), digits=4)
   table <- cbind(table, PValue=signif(x$table$PValue, digits=4), AdjPValue=AdjPValue)
-  table <- cbind(gene=rownames(x), table)
+  if (!any(colnames(anno) == "gene")) {
+    table <- cbind(gene=rownames(x), table)
+  } else {
+    table <- cbind(gene=anno$gene, table)
+    table$gene[is.na(table$gene)] <- "N/A"
+    anno$gene <- NULL
+  }
   xData <- buildXYData(table, status, main, display.columns, anno, counts, xlab, ylab, status.cols, sample.cols, groups, transform.counts)
   return(glimmaXYWidget(xData, width, height, html))
 }
@@ -315,7 +327,13 @@ glimmaMA.DESeqDataSet  <- function(
                       signif(res.df$log2FoldChange, digits=4))
   colnames(table) <- c(xlab, ylab)
   table <- cbind(table, PValue=signif(res.df$pvalue, digits=4), AdjPValue=signif(res.df$padj, digits=4))
-  table <- cbind(gene=rownames(x), table)
+  if (!any(colnames(anno) == "gene")) {
+    table <- cbind(gene=rownames(x), table)
+  } else {
+    table <- cbind(gene=anno$gene, table)
+    table$gene[is.na(table$gene)] <- "N/A"
+    anno$gene <- NULL
+  }
   xData <- buildXYData(table, status, main, display.columns, anno, counts, xlab, ylab, status.cols, sample.cols, groups, transform.counts)
   return(glimmaXYWidget(xData, width, height, html))
 }

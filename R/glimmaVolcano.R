@@ -80,7 +80,13 @@ glimmaVolcano.MArrayLM <- function(
   logCPM <- signif(unname(x$Amean), digits=4)
   AdjPValue <- signif(stats::p.adjust(x$p.value[, coef], method=p.adj.method), digits=4)
   table <- cbind(table, logCPM=logCPM, AdjPValue=AdjPValue)
-  table <- cbind(gene=rownames(x), table)
+  if (!any(colnames(anno) == "gene")) {
+    table <- cbind(gene=rownames(x), table)
+  } else {
+    table <- cbind(gene=anno$gene, table)
+    table$gene[is.na(table$gene)] <- "N/A"
+    anno$gene <- NULL
+  }
   if (is.matrix(status)) status <- status[, coef]
   xData <- buildXYData(table, status, main, display.columns, anno, counts, xlab, ylab, status.cols, sample.cols, groups, transform.counts)
   return(glimmaXYWidget(xData, width, height, html))
@@ -148,7 +154,13 @@ glimmaVolcano.DGEExact <- function(
   AdjPValue <- signif(stats::p.adjust(x$table$PValue, method=p.adj.method), digits=4)
   logCPM <- signif(x$table$logCPM, digits=4)
   table <- cbind(table, logCPM=logCPM, AdjPValue=AdjPValue)
-  table <- cbind(gene=rownames(x), table)
+  if (!any(colnames(anno) == "gene")) {
+    table <- cbind(gene=rownames(x), table)
+  } else {
+    table <- cbind(gene=anno$gene, table)
+    table$gene[is.na(table$gene)] <- "N/A"
+    anno$gene <- NULL
+  }
   xData <- buildXYData(table, status, main, display.columns, anno, counts, xlab, ylab, status.cols, sample.cols, groups, transform.counts)
   return(glimmaXYWidget(xData, width, height, html))
 }
@@ -241,7 +253,13 @@ glimmaVolcano.DESeqDataSet  <- function(
   colnames(table) <- c(xlab, ylab)
   table <- cbind(table, logCPM=signif(log(res.df$baseMean + 0.5), digits=4),
                         AdjPValue=signif(res.df$padj, digits=4))
-  table <- cbind(gene=rownames(x), table)
+  if (!any(colnames(anno) == "gene")) {
+    table <- cbind(gene=rownames(x), table)
+  } else {
+    table <- cbind(gene=anno$gene, table)
+    table$gene[is.na(table$gene)] <- "N/A"
+    anno$gene <- NULL
+  }
   xData <- buildXYData(table, status, main, display.columns, anno, counts, xlab, ylab, status.cols, sample.cols, groups, transform.counts)
   return(glimmaXYWidget(xData, width, height, html))
 }
