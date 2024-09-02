@@ -115,7 +115,7 @@ glimmaVolcano.MArrayLM <- function(
 #'
 #' glimmaVolcano(glrt, dge = dge)
 #'
-#' @importFrom edgeR decideTestsDGE
+#' @importFrom edgeR decideTests.DGELRT
 #' @importFrom stats p.adjust
 #' @export
 glimmaVolcano.DGEExact <- function(
@@ -123,7 +123,7 @@ glimmaVolcano.DGEExact <- function(
   dge=NULL,
   counts=dge$counts,
   groups=dge$samples$group,
-  status=edgeR::decideTestsDGE(x),
+  status=edgeR::decideTests.DGEExact(x),
   anno=x$genes,
   display.columns = NULL,
   status.cols=c("#1052bd", "silver", "#cc212f"),
@@ -173,7 +173,7 @@ glimmaVolcano.DGEExact <- function(
 #' @inheritParams glimmaMA.DGELRT
 #' @seealso \code{\link{glimmaVolcano}}, \code{\link{glimmaVolcano.MArrayLM}}, \code{\link{glimmaVolcano.DGEExact}}, \code{\link{glimmaVolcano.DESeqDataSet}}
 #' @eval volcano_details()
-#' @importFrom edgeR decideTestsDGE
+#' @importFrom edgeR decideTests.DGELRT
 #' @importFrom stats p.adjust
 #' @export
 glimmaVolcano.DGELRT <- glimmaVolcano.DGEExact
