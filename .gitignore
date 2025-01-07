@@ -1,6 +1,10 @@
-.DS_Store
 .Rproj.user
 .Rhistory
-.RData
-.Ruserdata
-*.Rproj
+.vs
+inst/doc
+.vs
+..Rcheck
+.DS_Store
+Glimma.Rproj
+GlimmaV2.Rproj
+/vignettes/QuartoTest*
