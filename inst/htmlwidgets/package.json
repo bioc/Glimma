@@ -1,0 +1,16 @@
+{
+  "name": "glimma",
+  "version": "1.0.0",
+  "exports": {
+    "./glimmaMDS.js": "./glimmaMDS.js",
+    "./glimmaXY.js": "./glimmaXY.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@types/jquery": "^3.5.32",
+    "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  }
+}
