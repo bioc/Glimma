@@ -1,7 +1,7 @@
 Package: Glimma
 Type: Package
 Title: Interactive visualizations for gene expression analysis
-Version: 2.23.0
+Version: 2.19.2
 Authors@R: 
     c(
         person(
@@ -64,7 +64,7 @@ Suggests:
     BiocStyle,
     IRanges,
     GenomicRanges,
-    pryr,
+    purrr,
     AnnotationHub,
     scRNAseq,
     scater,

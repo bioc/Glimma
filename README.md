@@ -5,26 +5,40 @@
 [![Build Status](https://travis-ci.org/hasaru-k/GlimmaV2.svg?branch=master)](https://travis-ci.org/hasaru-k/GlimmaV2)
 [![codecov](https://codecov.io/gh/hasaru-k/GlimmaV2/branch/master/graph/badge.svg)](https://codecov.io/gh/hasaru-k/GlimmaV2)
 # 
-Glimma 2,0 is an interactive R widget for creating plots for differential expression analysis, created using the [Vega](https://vega.github.io/vega/) and [htmlwidgets](https://www.htmlwidgets.org/) frameworks. It's an update/reimplementation of [Glimma 1.0](https://github.com/Shians/Glimma)! New features include:
+Glimma 2.0 is an interactive R widget for creating plots for differential expression analysis, created using the [Vega](https://vega.github.io/vega/) and [htmlwidgets](https://www.htmlwidgets.org/) frameworks. It's an update/reimplementation of [Glimma 1.0](https://github.com/Shians/Glimma)! New features include:
 - 🧬 multiple gene selections
-- 📓 full integration with R markdown
+- 📓 full integration with Quarto and R markdown
+- 🎨 support for interactive switching between contrasts in limma-style objects
 - 🖼 exporting plots to PNG/SVG/CSV formats
 
 #### Available on [Bioconductor](https://bioconductor.org/packages/release/bioc/html/Glimma.html).
 
 Feedback is welcome, please feel free to open an issue for any enhancements you would like to see in future.
-## *glimmaMA*: MA plot
-![MA plot](https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/maplot.gif "MA Plot")
-## *glimmaVolcano*: Volcano plot
-![Volcano plot](https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/volcano_plot.gif "Volcano Plot")
-## *glimmaMDS*: Multidimensional scaling plot
-![MDS plot](https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/MDS_numeric.gif "MDS Plot")
+
+| Function | Example |
+| ------------- | ------------- |
+| **glimmaMA**: _MA plot_ | <img src="https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/MA.gif" /> |
+| **glimmaVolcano**: _Volcano plot_ | <img src="https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/volcano.gif"/> |
+| **glimmaMDS**: _Multidimensional scaling plot_ | <img src="https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/MDS.png"/> |
+
 ## Installation
 You can install the development version of GlimmaV2 using devtools from the R command line.
 ```R
-devtools::install_github("hasaru-k/GlimmaV2")
+devtools::install_github("mritchielab/GlimmaV2")
 ```
-## Options
+## Features
+
+### Multiple contrast selection
+
+You now can interactively switch between multiple contrasts within _limma_ style objects:
+<img src="https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/contrasts.gif" width="600px"/>
+
+### Expression plot controls
+
+| Y-axis | Jitter |
+| ------------- | ------------- |
+| You can **fix** the **y-axis** when switching between genes by specifying ```Y min``` and ```Y max``` values: <img src="https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/axis.gif"/> | Jitter can be interactively applied when samples are overlying each other: <img src="https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/jitter.gif"/> |
+
 ### Plot Colouring (MA/Volcano/XY)
 The default mapping between the status vector and color of the gene is given below:
 ```
@@ -68,14 +82,6 @@ If more flexibility is required (ex. varying the background colour, whether or n
 glMA <- glimmaMA(fit, dge=rnaseq)
 htmlwidgets::saveWidget(glMA, file="glimmaV2Example.html")
 ```
-
-### Fixing Expression Y-Axis (MA/Volcano/XY)
-
-GlimmaV2 automatically rescales the y-axis of the expression plot depending on which gene is currently selected. This can make it difficult to compare the expression of different genes. In order to fix the y-axis when selecting between multiple genes, you can specify a maximum y-value in the ```max_y_axis``` input form.
-
-| Rescaling Axis  | Fixed Axis |
-| ------------- | ------------- |
-| ![](https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/unfixed_axis.gif "")  | ![](https://github.com/hasaru-k/GlimmaV2-docs/blob/master/documentation/fix_axis.gif "")  |
 
 ### Sizing
 The width and height parameters can be adjusted to change the dimensions of the widget in pixels in the RStudio viewer and in knitted HTML:
