@@ -1,8 +1,8 @@
 Package: Glimma
 Type: Package
 Title: Interactive visualizations for gene expression analysis
-Version: 2.23.1
-Authors@R: 
+Version: 2.22.1
+Authors@R:
     c(
         person(
             "Shian", "Su",
